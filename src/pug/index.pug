@@ -1,4 +1,5 @@
 doctype html
+- const WHATSAPP = process.env.WPP_ID
 html(lang='en')
   head
     meta(charset='utf-8')
@@ -25,19 +26,6 @@ html(lang='en')
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container.px-4.px-lg-5
         a.navbar-brand(href='#') WhatsApp Shop
-        button.navbar-toggler(
-          type='button'
-          data-bs-toggle='collapse'
-          data-bs-target='#navbarSupportedContent'
-          aria-controls='navbarSupportedContent'
-          aria-expanded='false'
-          aria-label='Toggle navigation'
-        )
-          span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-          ul.navbar-nav.me-auto.mb-2.mb-lg-0.ms-lg-4
-            li.nav-item
-              a.nav-link.active(aria-current='page', href='#') Home
 
     // Header
     header.bg-dark.py-5
@@ -45,7 +33,7 @@ html(lang='en')
         .text-center.text-white
           h1.display-4.fw-bolder Productos disponibles
           p.lead.fw-normal.text-white-50.mb-0
-           | Escríbenos por WhatsApp para comprar
+            | Escríbenos por WhatsApp para comprar
 
     // Section
     section.py-5
@@ -55,105 +43,126 @@ html(lang='en')
           // Product 1
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/masi-blue-1.jpg', alt='adidas-women-1')
+              img.card-img-top(
+                src='assets/img/masi-blue-1.jpg'
+                alt='Converse SHAI 001 Masi Blue sneakers'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Converse SHAI 001 - Masi blue
-                  | $1'200.000 COP
+                  h5.fw-bolder Converse SHAI 001 - Masi Blue
+                  | $1.200.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Converse%20SHAI%20001%20Masi%20Blue`
                     target='_blank'
                   ) WhatsApp
 
           // Product 2
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/ae-2-blue-1.webp', alt='adidas-women-2')
+              img.card-img-top(
+                src='assets/img/ae-2-blue-1.webp'
+                alt='Adidas Anthony Edwards 2 Blue basketball shoes'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Adidas Anthony Edwards 2 - blue
+                  h5.fw-bolder Adidas Anthony Edwards 2 - Blue
                   | $510.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Adidas%20Anthony%20Edwards%202%20Blue`
                     target='_blank'
                   ) WhatsApp
 
           // Product 3
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/socks-1.jpg', alt='adidas-women-yellow-1')
+              img.card-img-top(
+                src='assets/img/socks-1.jpg'
+                alt='Puma premium white socks'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Puma premium socks
+                  h5.fw-bolder Puma Premium Socks
                   | $22.000 COP c/u
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20las%20Puma%20Premium%20Socks`
                     target='_blank'
                   ) WhatsApp
 
           // Product 4
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/adidas-women-yellow-1.avif', alt='adidas-women-yellow-2')
+              img.card-img-top(
+                src='assets/img/adidas-women-yellow-1.avif'
+                alt='Adidas women yellow t-shirt'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Adidas women yellow t-shirt
+                  h5.fw-bolder Adidas Women Yellow T-Shirt
                   | $130.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20la%20Adidas%20Women%20Yellow%20T-Shirt`
                     target='_blank'
                   ) WhatsApp
 
           // Product 5
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/reebook-blue-2.jpg', alt='ae-2-blue-1')
+              img.card-img-top(
+                src='assets/img/reebook-blue-1.jpg'
+                alt='Reebok sky blue sneakers'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Reebook SkyBlue Sneakers
+                  h5.fw-bolder Reebok Sky Blue Sneakers
                   | $370.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20los%20Reebok%20Sky%20Blue%20Sneakers`
                     target='_blank'
                   ) WhatsApp
 
           // Product 6
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/adidas-women-1.avif', alt='ae-2-blue-2')
+              img.card-img-top(
+                src='assets/img/adidas-women-1.avif'
+                alt='Adidas women white sneakers'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Adidas women white sneakers
+                  h5.fw-bolder Adidas Women White Sneakers
                   | $305.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20los%20Adidas%20Women%20White%20Sneakers`
                     target='_blank'
                   ) WhatsApp
 
           // Product 7
           .col.mb-5
             .card.h-100
-              img.card-img-top(src='assets/img/ae-2-yellow-2.avif', alt='ae-2-yellow-2')
+              img.card-img-top(
+                src='assets/img/ae-2-yellow-2.avif'
+                alt='Adidas Anthony Edwards 2 Yellow basketball shoes'
+              )
               .card-body.p-4
                 .text-center
-                  h5.fw-bolder Adidas Anthony Edwards 2 - yellow
+                  h5.fw-bolder Adidas Anthony Edwards 2 - Yellow
                   | $510.000 COP
               .card-footer.p-4.pt-0.border-top-0.bg-transparent
                 .text-center
                   a.btn.btn-success.mt-auto(
-                    href='https://wa.me/573166209315?text=Hola,%20me%20interesa%20ae-2-yellow-1'
+                    href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Adidas%20Anthony%20Edwards%202%20Yellow`
                     target='_blank'
                   ) WhatsApp
 
