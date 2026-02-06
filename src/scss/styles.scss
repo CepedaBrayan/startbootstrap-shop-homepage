@@ -1,2 +1,20 @@
 // Import Bootstrap
 @import "bootstrap/scss/bootstrap.scss";
+
+/* ===== Product Card Image (FULL COVER) ===== */
+
+.card-img-top.product-image {
+  width: 100%;
+  height: 260px;          /* controla el tamaño del cuadrado */
+  object-fit: cover;     /* 🔥 llena todo el contenedor */
+  object-position: center;
+  background-color: #f1f3f5;
+}
+
+
+@media (max-width: 576px) {
+  .card-img-top.product-image {
+    height: 200px;
+  }
+}
+
