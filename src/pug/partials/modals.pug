@@ -1,5 +1,32 @@
 // ================= MODALS WITH CAROUSELS =================
 
+// Modal 0 - Converse SHAI 001 - Hail Clay
+.modal.fade#modal-hail-clay(tabindex='-1')
+  .modal-dialog.modal-lg.modal-dialog-centered
+    .modal-content
+      .modal-header
+        h5.modal-title Converse SHAI 001 - Hail Clay
+        button.btn-close(type='button', data-bs-dismiss='modal')
+      .modal-body
+        .carousel.slide#carousel-hail-clay(data-bs-ride='carousel')
+          .carousel-inner
+            .carousel-item.active
+              img.d-block.w-100(src='assets/img/hail-clay-1.avif')
+            .carousel-item
+              img.d-block.w-100(src='assets/img/hail-clay-2.webp')
+          button.carousel-control-prev(
+            type='button'
+            data-bs-target='#carousel-hail-clay'
+            data-bs-slide='prev'
+          )
+            span.carousel-control-prev-icon
+          button.carousel-control-next(
+            type='button'
+            data-bs-target='#carousel-hail-clay'
+            data-bs-slide='next'
+          )
+            span.carousel-control-next-icon
+
 // Modal 1 - Converse SHAI 001
 .modal.fade#modal-masi-blue(tabindex='-1')
   .modal-dialog.modal-lg.modal-dialog-centered
