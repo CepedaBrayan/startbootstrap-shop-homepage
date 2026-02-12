@@ -6,11 +6,10 @@
 .card-img-top.product-image {
   width: 100%;
   height: 260px;          /* controla el tamaño del cuadrado */
-  object-fit: cover;     /* 🔥 llena todo el contenedor */
+  object-fit: cover;      /* llena todo el contenedor */
   object-position: center;
   background-color: #f1f3f5;
 }
-
 
 @media (max-width: 576px) {
   .card-img-top.product-image {
@@ -18,3 +17,19 @@
   }
 }
 
+/* ===== Modal carousel stable size ===== */
+
+.modal-body {
+  padding: 0;
+}
+
+.modal-body .carousel-item {
+  height: 75vh;          /* tamaño fijo relativo a pantalla */
+  text-align: center;
+}
+
+.modal-body .carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;   /* 🔥 ahora llena todo el recuadro */
+}

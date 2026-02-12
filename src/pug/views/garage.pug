@@ -1,0 +1,129 @@
+doctype html
+- const WHATSAPP = process.env.WPP_ID
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Garage Sale - WhatsApp Shop
+
+    link(rel='icon', type='image/x-icon', href='../assets/favicon.ico')
+    link(href='../css/styles.css', rel='stylesheet')
+
+  body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      .container.px-4.px-lg-5
+        a.navbar-brand(href='../index.html') ← Back to Home
+
+    header.bg-dark.py-5
+      .container.px-4.px-lg-5.my-5.text-center.text-white
+        h1.display-4.fw-bolder Garage Sale
+        p.lead.text-white-50 Gently used products / Productos muy poco usados
+
+    section.py-5
+      .container.px-4.px-lg-5.mt-5
+        .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center
+
+          // 1. Xbox Series S + Control
+          .col.mb-5
+            .card.h-100
+              img.card-img-top.product-image(
+                src='../assets/img/garage/xbox-2.jpg'
+                alt='Xbox Series S + Control'
+                data-bs-toggle='modal'
+                data-bs-target='#modal-xbox'
+                style='cursor:pointer'
+              )
+              .card-body.p-4.text-center
+                h5.fw-bolder Xbox Series S + Control
+                | $1.800.000 COP
+              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+                a.btn.btn-success(
+                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Xbox%20Series%20S%20+%20Control`
+                  target='_blank'
+                ) WhatsApp
+
+          // 2. Router Xiaomi High Speed
+          .col.mb-5
+            .card.h-100
+              img.card-img-top.product-image(
+                src='../assets/img/garage/router-1.jpg'
+                alt='Router Xiaomi High Speed'
+                data-bs-toggle='modal'
+                data-bs-target='#modal-router'
+                style='cursor:pointer'
+              )
+              .card-body.p-4.text-center
+                h5.fw-bolder Router Xiaomi High Speed
+                | $200.000 COP
+              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+                a.btn.btn-success(
+                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Router%20Xiaomi%20High%20Speed`
+                  target='_blank'
+                ) WhatsApp
+
+          // 3. Samsung RAM 8GB 5600 MHZ
+          .col.mb-5
+            .card.h-100
+              img.card-img-top.product-image(
+                src='../assets/img/garage/samsung-ram-2.jpg'
+                alt='Samsung RAM 8GB 5600 MHZ'
+                data-bs-toggle='modal'
+                data-bs-target='#modal-samsung-ram'
+                style='cursor:pointer'
+              )
+              .card-body.p-4.text-center
+                h5.fw-bolder Samsung RAM 8GB 5600 MHZ
+                | $250.000 COP
+              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+                a.btn.btn-success(
+                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20la%20Samsung%20RAM%208GB%205600%20MHZ`
+                  target='_blank'
+                ) WhatsApp
+
+          // 4. Micron OEM 8GB RAM 5600 MHZ
+          .col.mb-5
+            .card.h-100
+              img.card-img-top.product-image(
+                src='../assets/img/garage/ram-black-1.jpg'
+                alt='Micron OEM 8GB RAM 5600 MHZ'
+                data-bs-toggle='modal'
+                data-bs-target='#modal-micron-ram'
+                style='cursor:pointer'
+              )
+              .card-body.p-4.text-center
+                h5.fw-bolder Micron OEM 8GB RAM 5600 MHZ
+                | $180.000 COP
+              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+                a.btn.btn-success(
+                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20la%20Micron%20OEM%208GB%20RAM%205600%20MHZ`
+                  target='_blank'
+                ) WhatsApp
+
+          // 5. Black Box for Electronical Devices
+          .col.mb-5
+            .card.h-100
+              img.card-img-top.product-image(
+                src='../assets/img/garage/black-box-1.jpg'
+                alt='Black Box for Electronical Devices'
+                data-bs-toggle='modal'
+                data-bs-target='#modal-black-box'
+                style='cursor:pointer'
+              )
+              .card-body.p-4.text-center
+                h5.fw-bolder Black Box for Electronical Devices
+                | $50.000 COP
+              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+                a.btn.btn-success(
+                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20la%20Black%20Box%20for%20Electronical%20Devices`
+                  target='_blank'
+                ) WhatsApp
+
+    // ===== Include Garage Modals =====
+    include ../partials/garage-modals.pug
+
+    footer.py-5.bg-dark
+      .container
+        p.m-0.text-center.text-white
+          | Copyright © WhatsApp Shop 2026
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')

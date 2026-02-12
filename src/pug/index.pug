@@ -1,212 +1,52 @@
 doctype html
-- const WHATSAPP = process.env.WPP_ID
 html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    meta(name='description', content='Shop WhatsApp Catalog')
-    meta(name='author', content='')
-
     title WhatsApp Shop
 
     link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
-    link(
-      href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css'
-      rel='stylesheet'
-    )
     link(href='css/styles.css', rel='stylesheet')
-    
-    // Vercel Web Analytics
-    script.
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    script(defer, src='/_vercel/insights/script.js')
 
-  body
+  body.d-flex.flex-column(style='min-height:100vh')
+
     // Navbar
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container.px-4.px-lg-5
         a.navbar-brand(href='#') WhatsApp Shop
 
-    // Header
-    header.bg-dark.py-5
-      .container.px-4.px-lg-5.my-5
-        .text-center.text-white
-          h1.display-4.fw-bolder Productos disponibles
-          p.lead.fw-normal.text-white-50.mb-0
-            | Escríbenos por WhatsApp para comprar
+    // Main section
+    main.flex-grow-1.d-flex.align-items-center
+      .container.px-4.px-lg-5
+        .row.justify-content-center.text-center.mb-4
+          .col-lg-8
+            h1.display-5.fw-bolder.mb-3 Choose a Category
+            p.lead.text-muted Select where you want to go
 
-    // ================= PRODUCTS =================
-    section.py-5
-      .container.px-4.px-lg-5.mt-5
-        .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center
+        .row.gx-4.gx-lg-5.justify-content-center
 
-          // 0. Converse SHAI 001 - Hail Clay
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/hail-clay-1.avif'
-                alt='Converse SHAI 001 Hail Clay'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-hail-clay'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Converse SHAI 001 - Hail Clay
-                h5 Size 8.5 US
-                | $1.200.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Converse%20SHAI%20001%20Hail%20Clay`
-                  target='_blank'
-                ) WhatsApp
+          // Shoes Card
+          .col-md-6.col-lg-4.mb-4
+            .card.h-100.shadow-sm
+              a(href='views/shoes.html')
+                img.card-img-top.product-image(
+                  src='assets/img/shoes/hail-clay-1.avif'
+                  alt='Shoes'
+                )
+              .card-body.text-center
+                h4.fw-bolder Shoes
 
-          // 1. Converse SHAI 001 - Masi Blue
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/masi-blue-1.jpg'
-                alt='Converse SHAI 001 Masi Blue'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-masi-blue'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Converse SHAI 001 - Masi Blue
-                h5 Size 8.5 US
-                | $1.200.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Converse%20SHAI%20001%20Masi%20Blue`
-                  target='_blank'
-                ) WhatsApp
+          // Garage Card
+          .col-md-6.col-lg-4.mb-4
+            .card.h-100.shadow-sm
+              a(href='views/garage.html')
+                img.card-img-top.product-image(
+                  src='assets/img/garage/xbox-2.jpg'
+                  alt='Garage Sale'
+                )
+              .card-body.text-center
+                h4.fw-bolder Garage Sale
 
-          // 2. Adidas AE 2 Blue
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/ae-2-blue-1.webp'
-                alt='Adidas Anthony Edwards 2 Blue'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-ae-blue'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Adidas Anthony Edwards 2 - Blue
-                h5 Size 9 US
-                | $510.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Adidas%20Anthony%20Edwards%202%20Blue`
-                  target='_blank'
-                ) WhatsApp
-
-          // 3. Puma Socks
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/socks-1.jpg'
-                alt='Puma Premium Socks'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-socks'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Puma Premium Socks
-                h5 Size S-L
-                | $22.000 COP c/u
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20las%20Puma%20Premium%20Socks`
-                  target='_blank'
-                ) WhatsApp
-
-          // 4. Adidas Women Yellow T-Shirt
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/adidas-women-yellow-1.avif'
-                alt='Adidas Women Yellow T-Shirt'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-adidas-yellow'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Adidas Women Yellow T-Shirt
-                h5 Size XS
-                | $130.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20la%20Adidas%20Women%20Yellow%20T-Shirt`
-                  target='_blank'
-                ) WhatsApp
-
-          // 5. Reebok Sky Blue
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/reebook-blue-2.jpg'
-                alt='Reebok Sky Blue Sneakers'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-reebok'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Reebok Sky Blue Sneakers
-                h5 Size 8.5 US
-                | $370.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20los%20Reebok%20Sky%20Blue%20Sneakers`
-                  target='_blank'
-                ) WhatsApp
-
-          // 6. Adidas Women White
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/adidas-women-1.avif'
-                alt='Adidas Women White Sneakers'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-adidas-white'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Adidas Women White Sneakers
-                h5 Size 7 US
-                | $305.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesan%20los%20Adidas%20Women%20White%20Sneakers`
-                  target='_blank'
-                ) WhatsApp
-
-          // 7. Adidas AE 2 Yellow
-          .col.mb-5
-            .card.h-100
-              img.card-img-top.product-image(
-                src='assets/img/shoes/ae-2-yellow-3.avif'
-                alt='Adidas Anthony Edwards 2 Yellow'
-                data-bs-toggle='modal'
-                data-bs-target='#modal-ae-yellow'
-                style='cursor:pointer'
-              )
-              .card-body.p-4.text-center
-                h5.fw-bolder Adidas Anthony Edwards 2 - Yellow
-                h5 Size 8 US
-                | $510.000 COP
-              .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
-                a.btn.btn-success(
-                  href=`https://wa.me/${WHATSAPP}?text=Hola,%20me%20interesa%20el%20Adidas%20Anthony%20Edwards%202%20Yellow`
-                  target='_blank'
-                ) WhatsApp
-
-    // ================= MODALS =================
-
-    include ./partials/modals.pug
-
-    footer.py-5.bg-dark
+    footer.py-3.bg-light
       .container
-        p.m-0.text-center.text-white
-          | Copyright © WhatsApp Shop 2026
-
-    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')
+        p.m-0.text-center.text-muted © WhatsApp Shop 2026
