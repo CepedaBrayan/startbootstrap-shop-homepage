@@ -67,5 +67,6 @@ Usa siempre `#ffffff` para todas las fotos. El catálogo utiliza un fondo blanco
 3. Revisa los cambios de datos, rutas y traducciones además del código. No incluyas `dist/`, `node_modules`, archivos temporales, `.env` ni credenciales. La plantilla `.env.example` debe contener `WPP_ID=` sin valor.
 4. Resume el resultado final y sus pruebas; señala cualquier comprobación bloqueada sin presentarla como aprobada.
 5. Sube el commit a la rama del PR, verifica que contenga el cambio y deja la fusión para cuando esté solicitada.
+6. El release automático corre únicamente al fusionar a `master`. Mantén el ZIP como código fuente sin archivos locales, el pin de acciones, la validación previa y la publicación desde borrador tras subir el asset. Los releases no sustituyen el deployment de Vercel.
 
 **Resultado esperado:** un PR con alcance claro, evidencia verificable y documentación actualizada.

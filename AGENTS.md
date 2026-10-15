@@ -31,6 +31,7 @@ Mantén un catálogo estático para comprar por WhatsApp, con Apparel y Garage S
 - Añade textos visibles y etiquetas accesibles al diccionario. Conserva los placeholders y el idioma de los mensajes de WhatsApp.
 - Mantén tema e idioma independientes y persistentes; conserva los enlaces relativos y el redireccionamiento de `shoes.html`.
 - Reutiliza los mixins y los estilos existentes. Evita añadir frameworks, servicios o dependencias sin necesidad concreta.
+- Mantén `vercel.json` limitado a despliegues Git de `master`. Los releases se publican solo para PRs fusionados a `master`, desde el commit de fusión exacto, tras build/tests y subida completa del ZIP fuente. No uses `pull_request_target` para ejecutar código de una rama externa.
 - Conserva BrowserSync e inspector limitados a loopback y la UI/túneles desactivados. Usa la configuración compartida para ambos modos.
 - Mantén `.env` fuera de Git y `.env.example` con `WPP_ID=` vacío.
 - `WPP_ID` se incorpora en enlaces públicos durante la compilación. Nunca uses variables del frontend para guardar secretos ni expongas credenciales en logs, commits o documentación.

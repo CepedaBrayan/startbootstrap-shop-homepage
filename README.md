@@ -96,6 +96,16 @@ git diff --check
 
 Para cambios visuales, comprueba tarjetas y galerías en móvil/escritorio y en ambos temas. Para cambios de inventario o textos, verifica también cantidades, unidades y mensajes de WhatsApp en cada idioma. Informa las pruebas realmente ejecutadas y cualquier limitación pendiente.
 
+## Vercel y releases automáticos
+
+`vercel.json` permite despliegues Git automáticos únicamente desde `master`; `**` desactiva el resto, incluidas ramas con `/` en el nombre. La regla se aplica a las ramas que contienen este archivo. Las ramas antiguas deben incorporar la configuración o desactivarse desde Vercel. No elimina previews ya publicados ni bloquea despliegues manuales por CLI/API. En Vercel, conserva `master` como Production Branch, `npm run build` como Build Command, `dist` como Output Directory y configura `WPP_ID` en el entorno de producción.
+
+`.github/workflows/release.yml` se ejecuta al cerrar un PR dirigido a `master` y publica únicamente si fue fusionado. Comprueba el commit exacto fusionado, instala con `npm ci`, compila y ejecuta los tests. Después publica un release con notas generadas por GitHub y un ZIP del código fuente versionado, con `.env.example` vacío y sin `.env`, `node_modules` ni `dist`. El ZIP permite instalar y compilar el proyecto; no es un paquete del sitio ya compilado. Vercel compila producción por separado usando sus variables de entorno.
+
+Los tags usan `vAAAA.MM.DD.NUMERO_PR`, con la fecha UTC de fusión. Por ejemplo: `v2026.10.15.4`. Una reejecución no duplica un release publicado. Primero se crea un borrador; se publica solo después de subir el ZIP. Un fallo de subida deja un borrador recuperable. Los pushes directos a `master` y los PRs cerrados sin fusionar no publican releases.
+
+La autenticación usa el `GITHUB_TOKEN` automático con `contents: write` en el job de publicación. No requiere tokens personales ni acceso de GitHub a las variables de Vercel. La compilación de validación usa un número de ejemplo que no se incluye en el ZIP fuente. Las acciones oficiales están fijadas a SHAs; revisa estos pines cuando actualices el workflow. El primer funcionamiento real solo puede comprobarse después de fusionar el workflow a `master`; no hace falta fusionar un PR para probar la generación local del ZIP con un cliente `gh` simulado.
+
 ## Licencia y origen
 
 Proyecto adaptado de **Start Bootstrap — Shop Homepage**, con Bootstrap 5.2.3. Se conserva la licencia [MIT](LICENSE) y la atribución del proyecto original. Las fotografías y marcas de productos corresponden a sus respectivos titulares; la licencia del código no implica derechos sobre esos materiales.
