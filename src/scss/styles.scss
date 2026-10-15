@@ -36,7 +36,7 @@
 
 /* Shared surfaces cover home, catalogs and photo modals. */
 :root {
-  color-scheme: light;
+  color-scheme: only light;
   --shop-background: #fff;
   --shop-surface: #fff;
   --shop-subtle: #f8f9fa;
@@ -46,7 +46,7 @@
 }
 
 :root[data-theme='dark'] {
-  color-scheme: dark;
+  color-scheme: only dark;
   --shop-background: #12161c;
   --shop-surface: #1d2530;
   --shop-subtle: #18202a;
@@ -108,4 +108,9 @@ body {
 }
 @media (max-width: 576px) {
   .product-placeholder { height: 200px; }
+}
+
+.shop-header, .shop-footer {
+  background-color: var(--shop-subtle);
+  color: var(--shop-text);
 }
