@@ -30,6 +30,9 @@ html(lang='en')
         .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center
           each product in products.apparel
             +productCard(product)
+        section.mt-5.p-4.border.rounded(aria-labelledby='warranty-heading')
+          h2.h4#warranty-heading(data-i18n='apparel.warranty.title') Warranty and special pricing
+          p.mb-0.text-muted(data-i18n='apparel.warranty.description') All our products are new and authentic. As imported products, they do not come with a manufacturer’s warranty; this is why they are offered at a significantly reduced price.
     each product in products.apparel
       if product.images.length
         +productModal(product)

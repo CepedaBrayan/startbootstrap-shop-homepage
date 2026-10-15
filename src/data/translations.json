@@ -65,7 +65,9 @@
         "products.shopsense-ai-shopping-bag-heavy": "Shopsense ai - shopping bag - heavy",
         "products.black-box-for-electronical-devices": "Black box for electronical devices",
         "products.cooler-for-small-pc-usb-connection": "Cooler for small pc - usb connection",
-        "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne ps4 - brand new - but plastic opened"
+        "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne ps4 - brand new - but plastic opened",
+        "apparel.warranty.title": "Warranty and special pricing",
+        "apparel.warranty.description": "All our products are new and authentic. As imported products, they do not come with a manufacturer’s warranty; this is why they are offered at a significantly reduced price."
       }
     },
     "es": {
@@ -132,7 +134,9 @@
         "products.shopsense-ai-shopping-bag-heavy": "Bolsa de compras resistente ShopSense AI",
         "products.black-box-for-electronical-devices": "Caja negra para dispositivos electrónicos",
         "products.cooler-for-small-pc-usb-connection": "Ventilador USB para PC pequeño",
-        "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne PS4 - nuevo, con el plástico abierto"
+        "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne PS4 - nuevo, con el plástico abierto",
+        "apparel.warranty.title": "Garantía y precio especial",
+        "apparel.warranty.description": "Todos nuestros productos son nuevos y originales. Al ser productos importados, no cuentan con garantía del fabricante; por esta razón, se ofrecen con una rebaja significativa."
       }
     }
   }
