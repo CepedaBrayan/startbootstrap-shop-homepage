@@ -49,7 +49,7 @@
         "products.reebok-skyblue-sneakers": "Reebok skyblue sneakers",
         "products.adidas-white-women-sneakers": "Adidas white women sneakers",
         "products.ae-all-star-orange": "AE All star Orange",
-        "products.ae-all-star-multicolor": "AE All star Multicolor",
+        "products.ae-all-star-multicolor": "AE2 Multicolor",
         "products.ae-yellow": "AE Yellow",
         "products.adidas-women-pink-jogger": "Adidas women pink jogger",
         "products.adidas-women-gray-hoodie": "Adidas women gray hoodie",
@@ -59,7 +59,7 @@
         "products.adidas-men-shoes-casual": "Adidas men shoes casual",
         "products.adidas-men-jogger-regular-fit-black": "Adidas men jogger regular fit - black",
         "products.adidas-black-long-sleeve-shirt-fit": "Adidas black long sleeve shirt - fit",
-        "products.puma-premium-socks": "Puma Premium Socks",
+        "products.puma-premium-socks": "Puma White Socks",
         "products.xbox-series-s-control": "Xbox series s + control",
         "products.router-xiaomi-high-speed": "Router Xiaomi high speed",
         "products.shopsense-ai-shopping-bag-heavy": "Shopsense ai - shopping bag - heavy",
@@ -67,7 +67,9 @@
         "products.cooler-for-small-pc-usb-connection": "Cooler for small pc - usb connection",
         "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne ps4 - brand new - but plastic opened",
         "apparel.warranty.title": "Warranty and special pricing",
-        "apparel.warranty.description": "All our products are new and authentic. As imported products, they do not come with a manufacturer’s warranty; this is why they are offered at a significantly reduced price."
+        "apparel.warranty.description": "All our products are new and authentic. As imported products, they do not come with a manufacturer’s warranty; this is why they are offered at a significantly reduced price.",
+        "products.adidas-white-socks": "Adidas White Socks",
+        "products.puma-black-socks": "Puma Black Socks"
       }
     },
     "es": {
@@ -118,7 +120,7 @@
         "products.reebok-skyblue-sneakers": "Tenis Reebok azul cielo",
         "products.adidas-white-women-sneakers": "Tenis Adidas blancos para mujer",
         "products.ae-all-star-orange": "AE All Star naranja",
-        "products.ae-all-star-multicolor": "AE All Star multicolor",
+        "products.ae-all-star-multicolor": "AE2 Multicolor",
         "products.ae-yellow": "AE amarillo",
         "products.adidas-women-pink-jogger": "Jogger Adidas rosado para mujer",
         "products.adidas-women-gray-hoodie": "Buzo Adidas gris con capucha para mujer",
@@ -128,7 +130,7 @@
         "products.adidas-men-shoes-casual": "Tenis Adidas casuales para hombre",
         "products.adidas-men-jogger-regular-fit-black": "Jogger Adidas para hombre de corte regular - negro",
         "products.adidas-black-long-sleeve-shirt-fit": "Camiseta Adidas negra de manga larga - ajustada",
-        "products.puma-premium-socks": "Medias Puma Premium",
+        "products.puma-premium-socks": "Medias Puma blancas",
         "products.xbox-series-s-control": "Xbox Series S + control",
         "products.router-xiaomi-high-speed": "Router Xiaomi de alta velocidad",
         "products.shopsense-ai-shopping-bag-heavy": "Bolsa de compras resistente ShopSense AI",
@@ -136,7 +138,9 @@
         "products.cooler-for-small-pc-usb-connection": "Ventilador USB para PC pequeño",
         "products.bloodborne-ps4-brand-new-but-plastic-opened": "Bloodborne PS4 - nuevo, con el plástico abierto",
         "apparel.warranty.title": "Garantía y precio especial",
-        "apparel.warranty.description": "Todos nuestros productos son nuevos y originales. Al ser productos importados, no cuentan con garantía del fabricante; por esta razón, se ofrecen con una rebaja significativa."
+        "apparel.warranty.description": "Todos nuestros productos son nuevos y originales. Al ser productos importados, no cuentan con garantía del fabricante; por esta razón, se ofrecen con una rebaja significativa.",
+        "products.adidas-white-socks": "Medias Adidas blancas",
+        "products.puma-black-socks": "Medias Puma negras"
       }
     }
   }

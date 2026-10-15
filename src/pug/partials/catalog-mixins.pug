@@ -13,7 +13,7 @@ mixin productCard(product)
         p.mb-2.text-muted(data-i18n=`product.available.${product.quantity === 1 ? 'one' : 'other'}`, data-i18n-params=JSON.stringify({count: product.quantity})) #{product.quantity} available
         p.mb-0
           span= '$' + product.price.toLocaleString('es-CO') + ' COP'
-          if product.id === 'puma-premium-socks'
+          if product.saleUnit === 'pair'
             span(data-i18n='product.pair')  / pair
       .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
         a.btn.btn-success(href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa ' + product.name + (product.size ? ' (talla ' + product.size + (product.sizeUnit ? ' ' + product.sizeUnit : '') + ')' : ''))}`, target='_blank', rel='noopener noreferrer', data-whatsapp-product=product.id, data-product-size=product.size ? product.size + (product.sizeUnit ? ' ' + product.sizeUnit : '') : '', data-i18n='whatsapp.label') WhatsApp
