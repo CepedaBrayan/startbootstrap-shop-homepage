@@ -67,6 +67,12 @@ Mantén IDs estables al renombrar productos. Añade o actualiza `products.<id>` 
 
 La primera foto de `images` es la portada; las demás aparecen en el modal. Conserva formato y resolución originales. Las fotos se muestran completas y proporcionadas. El fondo del espacio sobrante se configura por ruta en `image-backgrounds.json`, con un color hexadecimal de seis dígitos: usa siempre `#ffffff` en todas las rutas para mantener un fondo blanco uniforme. El fondo permanece blanco al cambiar de tema. El respaldo para una ruta ausente o un color inválido es blanco. No se detectan colores automáticamente en el navegador.
 
+## Ordenamiento por precio
+
+Apparel y Garage Sale usan un único mixin `productCatalog` en `src/pug/partials/catalog-mixins.pug` y un único script `src/js/catalog-sort.js`. El selector ofrece precio de menor a mayor (predeterminado) y de mayor a menor. Ordena por el valor numérico de `data-product-price`, conserva el orden original entre precios iguales y mueve las tarjetas existentes para mantener sus enlaces y modales. Cambiar idioma o tema no reinicia la selección. Los textos están en el diccionario y el selector usa las superficies del tema activo.
+
+La página de categorías comparte el encabezado, los márgenes y el espaciado de tarjetas de las vistas del catálogo para mantener una presentación cómoda en móvil.
+
 ## Idiomas y tema
 
 `translations.json` contiene `defaultLanguage` y `languages`. Cada idioma define `name`, `locale` y `messages`. Para añadir francés, copia `en` a `fr`, usa `Français` y `fr-FR`, y traduce todas las entradas conservando claves y placeholders. No hace falta cambiar JavaScript: el botón recorre los idiomas del diccionario.
