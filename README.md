@@ -1,12 +1,12 @@
 # WhatsApp Shop — Apparel & Garage Sale
 
-Catálogo estático de ropa, calzado, accesorios y artículos de Garage Sale. El cliente revisa precio, disponibilidad y fotos, y abre WhatsApp con el producto y su talla en el mensaje. Los precios se muestran en pesos colombianos (COP).
+A static catalog for clothing, footwear, accessories and garage-sale items. Visitors browse prices, availability and photos, then open WhatsApp with the selected product and size in their message. Prices are displayed in Colombian pesos (COP).
 
-Incluye inglés/español, selección persistente de idioma y tema claro/oscuro, galerías ampliables y diseño adaptable. El inventario se mantiene en archivos JSON y se convierte en HTML durante la compilación. No hay un backend de pedidos, pagos ni reserva automática de stock.
+The site includes English and Spanish, persistent language and light/dark preferences, photo galleries and responsive layouts. Inventory lives in JSON files and is compiled into HTML. There is no backend for orders, payments or automatic stock reservations.
 
-## Iniciar el proyecto
+## Getting started
 
-Requiere Node.js con el ejecutor `node --test` y npm; se recomienda Node.js 22. Instala las dependencias del lockfile:
+Use Node.js 22 and npm. Install the dependencies from the lockfile:
 
 ```sh
 git clone https://github.com/CepedaBrayan/startbootstrap-shop-homepage.git
@@ -14,79 +14,91 @@ cd startbootstrap-shop-homepage
 npm ci
 ```
 
-Copia `.env.example` a `.env` y configura el número de WhatsApp, incluyendo código de país y solo dígitos:
+Copy `.env.example` to `.env` and set the seller's WhatsApp number, including the country code and digits only:
 
 ```dotenv
 WPP_ID=573001234567
 ```
 
-El número de ejemplo debe sustituirse por el del vendedor. `WPP_ID` se incorpora en los enlaces públicos al compilar; no es un secreto. `.env` y sus variantes locales se ignoran en Git; solo se versiona `.env.example`, con `WPP_ID` vacío. Eliminar `.env` de la rama no borra sus versiones históricas. No guardes credenciales en el frontend.
+Replace the example number before building. `WPP_ID` is embedded in public purchase links; it is not a secret. Local `.env` files are ignored by Git. Only `.env.example`, with an empty `WPP_ID`, is tracked. Removing `.env` from the current branch does not erase historical versions. Never put private credentials in frontend configuration.
 
 ```sh
 npm start
 ```
 
-Este comando compila el sitio, inicia BrowserSync y observa las fuentes. Usa la URL `http://127.0.0.1:3000` que muestra la terminal (si el puerto está ocupado, consulta el puerto elegido). El servidor escucha exclusivamente en `127.0.0.1`; la interfaz de administración y los túneles están desactivados. La configuración compartida está en `scripts/browser-sync-config.js`. `npm run start:debug` mantiene el mismo aislamiento y limita el inspector a `127.0.0.1:9229`. Los cambios de productos, traducciones, fondos y componentes compartidos reconstruyen las páginas. Si cambias `.env`, reinicia el proceso para recompilar con el nuevo número.
+This builds the site, starts BrowserSync and watches source files. Open the local URL shown in the terminal, normally `http://127.0.0.1:3000`. The server binds exclusively to `127.0.0.1`; its administration UI and tunnels are disabled. Both development modes use `scripts/browser-sync-config.js`. `npm run start:debug` also limits the debugger to `127.0.0.1:9229`.
 
-## Comandos
+Changes to products, translations, photo backgrounds and shared components rebuild the pages. Restart development after changing `.env` so the new number is included in the build.
 
-| Comando | Resultado |
+## Commands
+
+| Command | Purpose |
 | --- | --- |
-| `npm run build` | Limpia y genera todo el sitio en `dist/` |
-| `npm start` | Compilación, servidor local y recarga automática |
-| `npm run build:pug` | Genera HTML desde Pug y los datos JSON |
-| `npm run build:scss` | Compila Bootstrap y los estilos propios |
-| `npm run build:scripts` | Copia JavaScript del navegador |
-| `npm run build:assets` | Copia imágenes y demás assets |
-| `node --test tests/*.test.js` | Verifica traducciones y coherencia del catálogo/fondos |
-| `git diff --check` | Comprueba errores de whitespace |
+| `npm run build` | Clean and generate the complete site in `dist/` |
+| `npm start` | Build, start the local server and reload on changes |
+| `npm run build:pug` | Generate HTML from Pug templates and JSON data |
+| `npm run build:scss` | Compile Bootstrap and custom styles |
+| `npm run build:scripts` | Copy browser JavaScript |
+| `npm run build:assets` | Copy images and other assets |
+| `node --test tests/*.test.js` | Check catalog data, translations, sorting, local-server isolation and release packaging |
+| `git diff --check` | Check whitespace errors |
 
-`dist/` es salida generada: modifica `src/` y reconstruye. Para alojar el sitio, publica el contenido completo de `dist/` en un servidor estático conservando su estructura de carpetas. Configura `WPP_ID` en el entorno de compilación. Bootstrap JS se carga desde jsDelivr; las fotos, estilos y scripts propios se sirven desde el sitio.
+`dist/` is generated output: edit `src/` and rebuild. To host the site, publish the complete contents of `dist/` while preserving its directory structure. Set `WPP_ID` in the build environment. Bootstrap JavaScript is loaded from jsDelivr; images, styles and application scripts are served locally by the site.
 
-## Dónde modificar cada cosa
+## Project structure
 
-| Fuente | Responsabilidad |
+| Source | Responsibility |
 | --- | --- |
-| `src/data/products.json` | Productos agrupados en `apparel` y `garage` |
-| `src/data/translations.json` | Idiomas, textos y nombres traducidos |
-| `src/data/image-backgrounds.json` | Color de fondo por foto |
-| `src/assets/img/` | Archivos originales de imágenes |
-| `src/pug/index.pug` | Página de categorías |
-| `src/pug/views/` | Apparel, Garage Sale y redirección antigua de Shoes |
-| `src/pug/partials/catalog-mixins.pug` | Tarjetas, precio, enlaces y modales compartidos |
-| `src/scss/styles.scss` | Estilos del sitio y presentación de fotos |
-| `src/js/i18n.js` | Traducción y persistencia del idioma |
-| `src/js/scripts.js` | Selección y persistencia del tema |
-| `scripts/` | Compilación y observación de fuentes |
+| `src/data/products.json` | Products grouped into `apparel` and `garage` |
+| `src/data/translations.json` | Languages, UI messages and translated product names |
+| `src/data/image-backgrounds.json` | Uniform white backgrounds for product photos |
+| `src/assets/img/` | Original image files |
+| `src/pug/index.pug` | Category selection page |
+| `src/pug/views/` | Catalog pages and the legacy Shoes redirect |
+| `src/pug/partials/catalog-mixins.pug` | Shared catalog, sorting control, cards and photo modals |
+| `src/pug/partials/footer.pug` | Shared copyright and subtle AI-assisted development credit |
+| `src/scss/styles.scss` | Site styles, themes and image presentation |
+| `src/js/i18n.js` | Language selection, translation and persistence |
+| `src/js/scripts.js` | Theme selection and persistence |
+| `src/js/catalog-sort.js` | Shared numeric price sorting |
+| `scripts/` | Build, development and release tools |
 
-## Mantener productos y fotos
+## Maintaining products and photos
 
-Cada producto tiene `id`, `name`, `quantity`, `size`, `sizeUnit`, `price` e `images`. `price` es un número en COP; `images` contiene rutas relativas a `src/assets/img/`. `size` y `sizeUnit` pueden ser `null`. Para venta por par, usa `saleUnit: "pair"`: cantidad y precio representan pares individuales.
+Each product has an `id`, `name`, `quantity`, `size`, `sizeUnit`, `price` and `images`. Prices are numeric COP amounts. Image paths are relative to `src/assets/img/`. Size and its unit may be `null`. Use `saleUnit: "pair"` for items sold by the pair: both quantity and price refer to individual pairs.
 
-Mantén IDs estables al renombrar productos. Añade o actualiza `products.<id>` en todos los idiomas. Separa variantes con stock y fotos propios: las medias Adidas blancas, Puma blancas y Puma negras son productos distintos.
+Keep IDs stable when renaming products, and update `products.<id>` in every language. Give variants with their own inventory or photos separate entries. White Adidas, white Puma and black Puma socks are separate products.
 
-La primera foto de `images` es la portada; las demás aparecen en el modal. Conserva formato y resolución originales. Las fotos se muestran completas y proporcionadas. El fondo del espacio sobrante se configura por ruta en `image-backgrounds.json`, con un color hexadecimal de seis dígitos: usa siempre `#ffffff` en todas las rutas para mantener un fondo blanco uniforme. El fondo permanece blanco al cambiar de tema. El respaldo para una ruta ausente o un color inválido es blanco. No se detectan colores automáticamente en el navegador.
+The first image is the cover; remaining images appear in the modal. Preserve original formats, resolution and bytes unless a transformation is requested. Photos retain their proportions and remain fully visible. Configure every image path in `image-backgrounds.json` with `#ffffff` so all unused image space stays white in both themes. Missing or invalid values fall back to white. There is no automatic browser-side color detection.
 
-## Idiomas y tema
+## Price sorting and page layout
 
-`translations.json` contiene `defaultLanguage` y `languages`. Cada idioma define `name`, `locale` y `messages`. Para añadir francés, copia `en` a `fr`, usa `Français` y `fr-FR`, y traduce todas las entradas conservando claves y placeholders. No hace falta cambiar JavaScript: el botón recorre los idiomas del diccionario.
+Apparel and Garage Sale use the same `productCatalog` mixin and `catalog-sort.js`. The selector offers low-to-high pricing by default and high-to-low pricing. It uses numeric `data-product-price` values, keeps the original relative order of equally priced items, and moves existing cards to preserve their modal targets and purchase links.
 
-En la primera visita se usa un idioma compatible del navegador o el idioma predeterminado; los mensajes ausentes usan el respaldo configurado. El tema sigue la preferencia del sistema hasta que se elige otro. Las selecciones explícitas se guardan en el navegador y se conservan al navegar. Idioma y tema funcionan de forma independiente. El diccionario se integra en el HTML durante el build; editarlo exige reconstruir.
+Changing language or theme retains the current sorting selection. Labels are defined in the translation dictionary, and the selector follows the active theme. The category selection page shares the catalog header, margins and card spacing on mobile. On desktop (992px and wider), it becomes a viewport-height landing page with side-by-side category cards, flexible image areas and a visible footer, without vertical scrolling. Smaller screens keep the stacked, scrollable layout.
 
-## Desarrollo dirigido por IA
+All three main pages share a footer with a small, understated `powered by AI assisted` credit. The requested credit remains in English in both site languages and adapts to the active theme.
 
-El repositorio está preparado para que un agente pueda continuar el trabajo con contexto explícito, fuentes identificadas y verificaciones reproducibles:
+## Languages and themes
 
-- [AGENTS.md](AGENTS.md): instrucciones generales, límites de edición y criterio de finalización.
-- [SKILLS.md](SKILLS.md): procedimientos para inventario, fotos, idiomas, interfaz y entrega de PRs.
+`translations.json` defines `defaultLanguage` and `languages`. Each language contains `name`, `locale` and `messages`. To add another language, copy the English entry, assign its language code, name and locale, then translate every message while preserving keys and placeholders such as `{name}`, `{size}` and `{count}`. The language button automatically cycles through the configured entries; no JavaScript change is needed.
 
-El ciclo de trabajo es **inspeccionar → implementar → validar → revisar el diff → actualizar el PR**. La IA ayuda a ejecutar los cambios; los datos comerciales provienen del responsable del catálogo. El sitio generado funciona sin servicios de IA.
+On the first visit, the site chooses a supported browser language or the configured default. Missing messages use the default-language dictionary. The theme follows the system preference until the visitor selects one. Explicit choices persist across navigation, and language and theme remain independent. The dictionary is embedded in HTML during compilation, so changes require a rebuild.
 
-Para revisar dependencias sin cambiar el lockfile, ejecuta `npm audit`; mantén sus correcciones verificadas mediante build y tests.
+## AI-assisted development
 
-La revisión del 15 de octubre de 2026 redujo los paquetes con alertas de 29 a 6. Las seis alertas restantes derivan de `braces` (GHSA-vfj7-8cjw-p6xm), que no tiene una versión corregida publicada. Afectan al árbol de desarrollo de BrowserSync/Chokidar/ShellJS; los patrones usados por el proyecto son fijos y el servidor queda limitado a loopback. `npm audit --omit=dev` reportó cero alertas. Esto no convierte las alertas de desarrollo en resueltas: deben reevaluarse cuando los mantenedores publiquen correcciones. No fuerces downgrades o exclusiones de auditoría para ocultarlas. Publica solo `dist/`: `npm start` y `start:debug` son herramientas de desarrollo local.
+The repository provides explicit context, source ownership and repeatable checks for developers and AI agents:
 
-Antes de entregar un cambio:
+- [AGENTS.md](AGENTS.md) defines repository-wide instructions, editing boundaries and completion criteria.
+- [SKILLS.md](SKILLS.md) describes procedures for inventory, images, languages, interface changes and pull requests.
+
+The workflow is **inspect → implement → validate → review the diff → update the PR**. AI assists with development; the catalog owner supplies commercial information. The generated site does not require an AI service at runtime.
+
+Run `npm audit` to review dependencies without changing the lockfile. Verify dependency updates through builds and tests. The October 15, 2026 review reduced affected packages from 29 to 6. The remaining alerts derive from the unpatched `braces` advisory GHSA-vfj7-8cjw-p6xm in development tooling. The project's patterns are fixed and its development server is restricted to loopback. The production-only audit reported zero alerts. Remaining development alerts still require reassessment when upstream fixes become available; do not hide them with audit exclusions or forced downgrades.
+
+Publish only `dist/`. Both `npm start` and `start:debug` are local development tools.
+
+Before delivering a change:
 
 ```sh
 npm run build
@@ -94,18 +106,20 @@ node --test tests/*.test.js
 git diff --check
 ```
 
-Para cambios visuales, comprueba tarjetas y galerías en móvil/escritorio y en ambos temas. Para cambios de inventario o textos, verifica también cantidades, unidades y mensajes de WhatsApp en cada idioma. Informa las pruebas realmente ejecutadas y cualquier limitación pendiente.
+For visual changes, inspect cards and galleries on mobile and desktop in both themes. For inventory or translation changes, also verify quantities, units, prices and WhatsApp messages. Report the checks actually performed and any remaining limitations.
 
-## Vercel y releases automáticos
+## Vercel and automatic releases
 
-`vercel.json` permite despliegues Git automáticos únicamente desde `master`; `**` desactiva el resto, incluidas ramas con `/` en el nombre. La regla se aplica a las ramas que contienen este archivo. Las ramas antiguas deben incorporar la configuración o desactivarse desde Vercel. No elimina previews ya publicados ni bloquea despliegues manuales por CLI/API. En Vercel, conserva `master` como Production Branch, `npm run build` como Build Command, `dist` como Output Directory y configura `WPP_ID` en el entorno de producción.
+`vercel.json` permits automatic Git deployments only from `master`. The `**` rule disables other branches, including names containing slashes. This applies to branches containing the configuration; older branches need the same file or a project-level Vercel setting. It does not remove existing previews or block manual CLI/API deployments.
 
-`.github/workflows/release.yml` se ejecuta al cerrar un PR dirigido a `master` y publica únicamente si fue fusionado. Comprueba el commit exacto fusionado, instala con `npm ci`, compila y ejecuta los tests. Después publica un release con notas generadas por GitHub y un ZIP del código fuente versionado, con `.env.example` vacío y sin `.env`, `node_modules` ni `dist`. El ZIP permite instalar y compilar el proyecto; no es un paquete del sitio ya compilado. Vercel compila producción por separado usando sus variables de entorno.
+In Vercel, keep `master` as the Production Branch, `npm run build` as the Build Command, `dist` as the Output Directory, and configure `WPP_ID` for production. To cancel preview builds project-wide, select **Settings → Build and Deployment → Ignored Build Step → Only build production**. Canceled builds may remain visible in deployment history.
 
-Los tags usan `vAAAA.MM.DD.NUMERO_PR`, con la fecha UTC de fusión. Por ejemplo: `v2026.10.15.4`. Una reejecución no duplica un release publicado. Primero se crea un borrador; se publica solo después de subir el ZIP. Un fallo de subida deja un borrador recuperable. Los pushes directos a `master` y los PRs cerrados sin fusionar no publican releases.
+`.github/workflows/release.yml` responds to PR closures targeting `master` and publishes only merged PRs. It checks out the exact merged commit, installs the lockfile, builds and runs tests. It then creates a GitHub release with automatic notes and a source ZIP containing the tracked code and empty environment template, without `.env`, `node_modules` or `dist`. This is a source package to install and build, rather than a compiled website bundle. Vercel builds production separately with its own environment variables.
 
-La autenticación usa el `GITHUB_TOKEN` automático con `contents: write` en el job de publicación. No requiere tokens personales ni acceso de GitHub a las variables de Vercel. La compilación de validación usa un número de ejemplo que no se incluye en el ZIP fuente. Las acciones oficiales están fijadas a SHAs; revisa estos pines cuando actualices el workflow. El primer funcionamiento real solo puede comprobarse después de fusionar el workflow a `master`; no hace falta fusionar un PR para probar la generación local del ZIP con un cliente `gh` simulado.
+Tags follow `vYYYY.MM.DD.PR_NUMBER`, using the UTC merge date, for example `v2026.10.15.4`. Re-running a completed workflow does not duplicate a release. A draft is published only after the ZIP upload succeeds; an upload failure leaves a recoverable draft. Direct pushes to `master` and unmerged PR closures do not publish releases.
 
-## Licencia y origen
+Authentication uses the automatic `GITHUB_TOKEN` with `contents: write` for the release job. No personal token or Vercel credentials are required. The validation build uses a placeholder phone number; compiled output is not included in the source ZIP. Official actions are pinned to commit SHAs. Local tests exercise packaging, retry handling and publication ordering through a simulated `gh` client; the full GitHub workflow runs after a merge.
 
-Proyecto adaptado de **Start Bootstrap — Shop Homepage**, con Bootstrap 5.2.3. Se conserva la licencia [MIT](LICENSE) y la atribución del proyecto original. Las fotografías y marcas de productos corresponden a sus respectivos titulares; la licencia del código no implica derechos sobre esos materiales.
+## License and attribution
+
+Adapted from **Start Bootstrap — Shop Homepage**, using Bootstrap 5.2.3. The original [MIT license](LICENSE) and attribution are preserved. Product photographs and trademarks belong to their respective owners; the code license does not grant rights to those materials.

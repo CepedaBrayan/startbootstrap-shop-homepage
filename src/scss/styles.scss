@@ -133,3 +133,117 @@ body {
   background-size: 65%;
   border-radius: 50%;
 }
+
+.catalog-sort {
+  width: 100%;
+  max-width: 20rem;
+  color: var(--shop-text);
+  background-color: var(--shop-surface);
+  border-color: var(--shop-border);
+}
+
+@media (max-width: 575.98px) {
+  .catalog-sort { max-width: none; }
+}
+
+:root[data-theme='dark'] .catalog-sort {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f1f4f8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.ai-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  margin-top: .875rem;
+  padding: .2rem .625rem;
+  border: 1px solid var(--shop-border);
+  border-radius: 999px;
+  color: var(--shop-muted);
+  font-size: .6875rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.5;
+}
+
+.ai-credit-mark {
+  font-size: .875rem;
+  line-height: 1;
+}
+
+/* Desktop home fits the viewport by resizing content, without hiding overflow. */
+@media (min-width: 992px) {
+  .home-page {
+    display: grid !important;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .home-page .shop-header {
+    padding-block: clamp(1rem, 3vh, 2rem) !important;
+  }
+
+  .home-page .shop-header > .container {
+    margin-block: 0 !important;
+  }
+
+  .home-page h1 {
+    font-size: clamp(1.75rem, 4.5vh, 3.25rem);
+  }
+
+  .home-page .shop-header .lead { margin-bottom: 0; }
+
+  .home-page main {
+    min-height: 0;
+    padding-block: clamp(.75rem, 2vh, 1.5rem) !important;
+  }
+
+  .home-page main > .container {
+    height: 100%;
+    margin-top: 0 !important;
+  }
+
+  .home-page main .row {
+    height: 100%;
+    align-items: center;
+  }
+
+  .home-page main .row > div {
+    height: 100%;
+    max-height: 26rem;
+    margin-bottom: 0 !important;
+  }
+
+  .home-page .card { min-height: 0; }
+
+  .home-page .card > a {
+    display: flex;
+    flex: 1 1 0;
+    min-height: 0;
+  }
+
+  .home-page .product-image {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .home-page .card-body {
+    flex: 0 0 auto;
+    padding: 1rem !important;
+  }
+
+  .home-page .shop-footer {
+    padding-block: clamp(.75rem, 2vh, 1.5rem) !important;
+  }
+
+  .home-page .ai-credit { margin-top: .5rem; }
+}
+
+@media (min-width: 992px) and (max-height: 600px) {
+  .home-page .shop-header { padding-block: .75rem !important; }
+  .home-page h1 { font-size: 1.75rem; }
+  .home-page .shop-header .lead { font-size: 1rem; }
+  .home-page .card-body { padding: .5rem !important; }
+  .home-page .shop-footer { padding-block: .5rem !important; }
+  .home-page .ai-credit { margin-top: .25rem; }
+}

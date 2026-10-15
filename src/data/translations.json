@@ -69,7 +69,11 @@
         "apparel.warranty.title": "Warranty and special pricing",
         "apparel.warranty.description": "All our products are new and authentic. As imported products, they do not come with a manufacturer’s warranty; this is why they are offered at a significantly reduced price.",
         "products.adidas-white-socks": "Adidas White Socks",
-        "products.puma-black-socks": "Puma Black Socks"
+        "products.puma-black-socks": "Puma Black Socks",
+        "sort.label": "Sort by",
+        "sort.priceAscending": "Price: low to high",
+        "sort.priceDescending": "Price: high to low",
+        "footer.aiCredit": "powered by AI assisted"
       }
     },
     "es": {
@@ -140,7 +144,11 @@
         "apparel.warranty.title": "Garantía y precio especial",
         "apparel.warranty.description": "Todos nuestros productos son nuevos y originales. Al ser productos importados, no cuentan con garantía del fabricante; por esta razón, se ofrecen con una rebaja significativa.",
         "products.adidas-white-socks": "Medias Adidas blancas",
-        "products.puma-black-socks": "Medias Puma negras"
+        "products.puma-black-socks": "Medias Puma negras",
+        "sort.label": "Ordenar por",
+        "sort.priceAscending": "Precio: de menor a mayor",
+        "sort.priceDescending": "Precio: de mayor a menor",
+        "footer.aiCredit": "powered by AI assisted"
       }
     }
   }

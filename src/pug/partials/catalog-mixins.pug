@@ -1,7 +1,7 @@
 - const photoBackground = image => /^#[0-9a-f]{6}$/i.test(imageBackgrounds[image] || '') ? imageBackgrounds[image] : '#ffffff'
 
 mixin productCard(product)
-  .col.mb-5
+  .col.mb-5(data-product-price=product.price)
     .card.h-100
       if product.images.length
         button.product-photo(type='button', data-bs-toggle='modal', data-bs-target=`#modal-${product.id}`, aria-label=`View photos: ${product.name}`, data-i18n-aria-label='photo.view', data-product-id=product.id)
@@ -38,3 +38,15 @@ mixin productModal(product)
                 span.carousel-control-prev-icon(aria-hidden='true')
               button.carousel-control-next(type='button', data-bs-target=`#carousel-${product.id}`, data-bs-slide='next', aria-label='Next photo', data-i18n-aria-label='photo.next')
                 span.carousel-control-next-icon(aria-hidden='true')
+
+
+mixin productCatalog(catalog)
+  section(data-catalog)
+    .catalog-toolbar.d-flex.flex-column.flex-sm-row.align-items-sm-center.justify-content-sm-end.gap-2.mb-4
+      label.fw-semibold.mb-0(for='price-sort', data-i18n='sort.label') Sort by
+      select#price-sort.form-select.catalog-sort(data-price-sort)
+        option(value='asc', data-i18n='sort.priceAscending') Price: low to high
+        option(value='desc', data-i18n='sort.priceDescending') Price: high to low
+    .row.gx-4.gx-lg-5.row-cols-2.row-cols-md-3.row-cols-xl-4.justify-content-center(data-product-grid)
+      each product in catalog
+        +productCard(product)
