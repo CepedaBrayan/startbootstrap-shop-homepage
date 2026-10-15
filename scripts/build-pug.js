@@ -13,6 +13,7 @@ function _processFile(filePath) {
         filePath.match(/\.pug$/)
         && !filePath.match(/include/)
         && !filePath.match(/mixin/)
+        && !filePath.match(/\/pug\/partials\//)
         && !filePath.match(/\/pug\/layouts\//)
     ) {
         renderPug(filePath);

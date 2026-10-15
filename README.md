@@ -1,69 +1,111 @@
-# [Start Bootstrap - Shop Homepage](https://startbootstrap.com/template/shop-homepage/)
+# WhatsApp Shop — Apparel & Garage Sale
 
-[Shop Homepage](https://startbootstrap.com/template/shop-homepage/) is a basic HTML online store homepage template for [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/).
+Catálogo estático de ropa, calzado, accesorios y artículos de Garage Sale. El cliente revisa precio, disponibilidad y fotos, y abre WhatsApp con el producto y su talla en el mensaje. Los precios se muestran en pesos colombianos (COP).
 
-## Preview
+Incluye inglés/español, selección persistente de idioma y tema claro/oscuro, galerías ampliables y diseño adaptable. El inventario se mantiene en archivos JSON y se convierte en HTML durante la compilación. No hay un backend de pedidos, pagos ni reserva automática de stock.
 
-[![Shop Homepage Preview](https://assets.startbootstrap.com/img/screenshots/templates/shop-homepage.png)](https://startbootstrap.github.io/startbootstrap-shop-homepage/)
+## Iniciar el proyecto
 
-**[View Live Preview](https://startbootstrap.github.io/startbootstrap-shop-homepage/)**
+Requiere Node.js con el ejecutor `node --test` y npm; se recomienda Node.js 22. Instala las dependencias del lockfile:
 
-## Status
+```sh
+git clone https://github.com/CepedaBrayan/startbootstrap-shop-homepage.git
+cd startbootstrap-shop-homepage
+npm ci
+```
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/StartBootstrap/startbootstrap-shop-homepage/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-shop-homepage.svg)](https://www.npmjs.com/package/startbootstrap-shop-homepage)
+Copia `.env.example` a `.env` y configura el número de WhatsApp, incluyendo código de país y solo dígitos:
 
-## Download and Installation
+```dotenv
+WPP_ID=573001234567
+```
 
-To begin using this template, choose one of the following options to get started:
+El número de ejemplo debe sustituirse por el del vendedor. `WPP_ID` se incorpora en los enlaces públicos al compilar; no es un secreto. `.env` y sus variantes locales se ignoran en Git; solo se versiona `.env.example`, con `WPP_ID` vacío. Eliminar `.env` de la rama no borra sus versiones históricas. No guardes credenciales en el frontend.
 
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template/shop-homepage/)
-* Install via npm: `npm i startbootstrap-shop-homepage`
-* Clone the repo: `git clone https://github.com/StartBootstrap/startbootstrap-shop-homepage.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/StartBootstrap/startbootstrap-shop-homepage)
+```sh
+npm start
+```
 
-## Usage
+Este comando compila el sitio, inicia BrowserSync y observa las fuentes. Usa la URL `http://127.0.0.1:3000` que muestra la terminal (si el puerto está ocupado, consulta el puerto elegido). El servidor escucha exclusivamente en `127.0.0.1`; la interfaz de administración y los túneles están desactivados. La configuración compartida está en `scripts/browser-sync-config.js`. `npm run start:debug` mantiene el mismo aislamiento y limita el inspector a `127.0.0.1:9229`. Los cambios de productos, traducciones, fondos y componentes compartidos reconstruyen las páginas. Si cambias `.env`, reinicia el proceso para recompilar con el nuevo número.
 
-### Basic Usage
+## Comandos
 
-After downloading, simply edit the HTML and CSS files included with `dist` directory. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+| Comando | Resultado |
+| --- | --- |
+| `npm run build` | Limpia y genera todo el sitio en `dist/` |
+| `npm start` | Compilación, servidor local y recarga automática |
+| `npm run build:pug` | Genera HTML desde Pug y los datos JSON |
+| `npm run build:scss` | Compila Bootstrap y los estilos propios |
+| `npm run build:scripts` | Copia JavaScript del navegador |
+| `npm run build:assets` | Copia imágenes y demás assets |
+| `node --test tests/*.test.js` | Verifica traducciones y coherencia del catálogo/fondos |
+| `git diff --check` | Comprueba errores de whitespace |
 
-### Advanced Usage
+`dist/` es salida generada: modifica `src/` y reconstruye. Para alojar el sitio, publica el contenido completo de `dist/` en un servidor estático conservando su estructura de carpetas. Configura `WPP_ID` en el entorno de compilación. Bootstrap JS se carga desde jsDelivr; las fotos, estilos y scripts propios se sirven desde el sitio.
 
-Clone the source files of the theme and navigate into the theme's root directory. Run `npm install` and then run `npm start` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `package.json` file to see which scripts are included.
+## Dónde modificar cada cosa
 
-#### npm Scripts
+| Fuente | Responsabilidad |
+| --- | --- |
+| `src/data/products.json` | Productos agrupados en `apparel` y `garage` |
+| `src/data/translations.json` | Idiomas, textos y nombres traducidos |
+| `src/data/image-backgrounds.json` | Color de fondo por foto |
+| `src/assets/img/` | Archivos originales de imágenes |
+| `src/pug/index.pug` | Página de categorías |
+| `src/pug/views/` | Apparel, Garage Sale y redirección antigua de Shoes |
+| `src/pug/partials/catalog-mixins.pug` | Tarjetas, precio, enlaces y modales compartidos |
+| `src/scss/styles.scss` | Estilos del sitio y presentación de fotos |
+| `src/js/i18n.js` | Traducción y persistencia del idioma |
+| `src/js/scripts.js` | Selección y persistencia del tema |
+| `scripts/` | Compilación y observación de fuentes |
 
-* `npm run build` builds the project - this builds assets, HTML, JS, and CSS into `dist`
-* `npm run build:assets` copies the files in the `src/assets/` directory into `dist`
-* `npm run build:pug` compiles the Pug located in the `src/pug/` directory into `dist`
-* `npm run build:scripts` brings the `src/js/scripts.js` file into `dist`
-* `npm run build:scss` compiles the SCSS files located in the `src/scss/` directory into `dist`
-* `npm run clean` deletes the `dist` directory to prepare for rebuilding the project
-* `npm run start:debug` runs the project in debug mode
-* `npm start` or `npm run start` runs the project, launches a live preview in your default browser, and watches for changes made to files in `src`
+## Mantener productos y fotos
 
-You must have npm installed in order to use this build environment.
+Cada producto tiene `id`, `name`, `quantity`, `size`, `sizeUnit`, `price` e `images`. `price` es un número en COP; `images` contiene rutas relativas a `src/assets/img/`. `size` y `sizeUnit` pueden ser `null`. Para venta por par, usa `saleUnit: "pair"`: cantidad y precio representan pares individuales.
 
-## Bugs and Issues
+Mantén IDs estables al renombrar productos. Añade o actualiza `products.<id>` en todos los idiomas. Separa variantes con stock y fotos propios: las medias Adidas blancas, Puma blancas y Puma negras son productos distintos.
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/StartBootstrap/startbootstrap-shop-homepage/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](https://startbootstrap.com/template/shop-homepage/).
+La primera foto de `images` es la portada; las demás aparecen en el modal. Conserva formato y resolución originales. Las fotos se muestran completas y proporcionadas. El fondo del espacio sobrante se configura por ruta en `image-backgrounds.json`, con un color hexadecimal de seis dígitos: usa siempre `#ffffff` en todas las rutas para mantener un fondo blanco uniforme. El fondo permanece blanco al cambiar de tema. El respaldo para una ruta ausente o un color inválido es blanco. No se detectan colores automáticamente en el navegador.
 
-## About
+## Idiomas y tema
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+`translations.json` contiene `defaultLanguage` y `languages`. Cada idioma define `name`, `locale` y `messages`. Para añadir francés, copia `en` a `fr`, usa `Français` y `fr-FR`, y traduce todas las entradas conservando claves y placeholders. No hace falta cambiar JavaScript: el botón recorre los idiomas del diccionario.
 
-* <https://startbootstrap.com>
-* <https://twitter.com/SBootstrap>
+En la primera visita se usa un idioma compatible del navegador o el idioma predeterminado; los mensajes ausentes usan el respaldo configurado. El tema sigue la preferencia del sistema hasta que se elige otro. Las selecciones explícitas se guardan en el navegador y se conservan al navegar. Idioma y tema funcionan de forma independiente. El diccionario se integra en el HTML durante el build; editarlo exige reconstruir.
 
-Start Bootstrap was created by and is maintained by **[David Miller](https://davidmiller.io/)**.
+## Desarrollo dirigido por IA
 
-* <https://davidmiller.io>
-* <https://twitter.com/davidmillerhere>
-* <https://github.com/davidtmiller>
+El repositorio está preparado para que un agente pueda continuar el trabajo con contexto explícito, fuentes identificadas y verificaciones reproducibles:
 
-Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+- [AGENTS.md](AGENTS.md): instrucciones generales, límites de edición y criterio de finalización.
+- [SKILLS.md](SKILLS.md): procedimientos para inventario, fotos, idiomas, interfaz y entrega de PRs.
 
-## Copyright and License
+El ciclo de trabajo es **inspeccionar → implementar → validar → revisar el diff → actualizar el PR**. La IA ayuda a ejecutar los cambios; los datos comerciales provienen del responsable del catálogo. El sitio generado funciona sin servicios de IA.
 
-Copyright 2013-2023 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE) license.
+Para revisar dependencias sin cambiar el lockfile, ejecuta `npm audit`; mantén sus correcciones verificadas mediante build y tests.
+
+La revisión del 15 de octubre de 2026 redujo los paquetes con alertas de 29 a 6. Las seis alertas restantes derivan de `braces` (GHSA-vfj7-8cjw-p6xm), que no tiene una versión corregida publicada. Afectan al árbol de desarrollo de BrowserSync/Chokidar/ShellJS; los patrones usados por el proyecto son fijos y el servidor queda limitado a loopback. `npm audit --omit=dev` reportó cero alertas. Esto no convierte las alertas de desarrollo en resueltas: deben reevaluarse cuando los mantenedores publiquen correcciones. No fuerces downgrades o exclusiones de auditoría para ocultarlas. Publica solo `dist/`: `npm start` y `start:debug` son herramientas de desarrollo local.
+
+Antes de entregar un cambio:
+
+```sh
+npm run build
+node --test tests/*.test.js
+git diff --check
+```
+
+Para cambios visuales, comprueba tarjetas y galerías en móvil/escritorio y en ambos temas. Para cambios de inventario o textos, verifica también cantidades, unidades y mensajes de WhatsApp en cada idioma. Informa las pruebas realmente ejecutadas y cualquier limitación pendiente.
+
+## Vercel y releases automáticos
+
+`vercel.json` permite despliegues Git automáticos únicamente desde `master`; `**` desactiva el resto, incluidas ramas con `/` en el nombre. La regla se aplica a las ramas que contienen este archivo. Las ramas antiguas deben incorporar la configuración o desactivarse desde Vercel. No elimina previews ya publicados ni bloquea despliegues manuales por CLI/API. En Vercel, conserva `master` como Production Branch, `npm run build` como Build Command, `dist` como Output Directory y configura `WPP_ID` en el entorno de producción.
+
+`.github/workflows/release.yml` se ejecuta al cerrar un PR dirigido a `master` y publica únicamente si fue fusionado. Comprueba el commit exacto fusionado, instala con `npm ci`, compila y ejecuta los tests. Después publica un release con notas generadas por GitHub y un ZIP del código fuente versionado, con `.env.example` vacío y sin `.env`, `node_modules` ni `dist`. El ZIP permite instalar y compilar el proyecto; no es un paquete del sitio ya compilado. Vercel compila producción por separado usando sus variables de entorno.
+
+Los tags usan `vAAAA.MM.DD.NUMERO_PR`, con la fecha UTC de fusión. Por ejemplo: `v2026.10.15.4`. Una reejecución no duplica un release publicado. Primero se crea un borrador; se publica solo después de subir el ZIP. Un fallo de subida deja un borrador recuperable. Los pushes directos a `master` y los PRs cerrados sin fusionar no publican releases.
+
+La autenticación usa el `GITHUB_TOKEN` automático con `contents: write` en el job de publicación. No requiere tokens personales ni acceso de GitHub a las variables de Vercel. La compilación de validación usa un número de ejemplo que no se incluye en el ZIP fuente. Las acciones oficiales están fijadas a SHAs; revisa estos pines cuando actualices el workflow. El primer funcionamiento real solo puede comprobarse después de fusionar el workflow a `master`; no hace falta fusionar un PR para probar la generación local del ZIP con un cliente `gh` simulado.
+
+## Licencia y origen
+
+Proyecto adaptado de **Start Bootstrap — Shop Homepage**, con Bootstrap 5.2.3. Se conserva la licencia [MIT](LICENSE) y la atribución del proyecto original. Las fotografías y marcas de productos corresponden a sus respectivos titulares; la licencia del código no implica derechos sobre esos materiales.

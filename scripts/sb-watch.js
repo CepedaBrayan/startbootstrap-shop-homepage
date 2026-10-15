@@ -1,4 +1,5 @@
 'use strict';
+require('dotenv').config();
 
 const _ = require('lodash');
 const chokidar = require('chokidar');
@@ -31,7 +32,7 @@ function _processFile(filePath, watchEvent) {
     
     if (!READY) {
         if (filePath.match(/\.pug$/)) {
-            if (!filePath.match(/includes/) && !filePath.match(/mixins/) && !filePath.match(/\/pug\/layouts\//)) {
+            if (!filePath.match(/includes/) && !filePath.match(/mixins/) && !filePath.match(/\/pug\/layouts\//) && !filePath.match(/\/pug\/partials\//)) {
                 allPugFiles[filePath] = true;
             }    
         }    
@@ -40,6 +41,10 @@ function _processFile(filePath, watchEvent) {
     }
 
     console.log(`### INFO: File event: ${watchEvent}: ${filePath}`);
+
+    if (filePath.match(/src\/data\/.*\.json$/)) {
+        return _renderAllPug();
+    }
 
     if (filePath.match(/\.pug$/)) {
         return _handlePug(filePath, watchEvent);
@@ -64,12 +69,12 @@ function _processFile(filePath, watchEvent) {
 
 function _handlePug(filePath, watchEvent) {
     if (watchEvent === 'change') {
-        if (filePath.match(/includes/) || filePath.match(/mixins/) || filePath.match(/\/pug\/layouts\//)) {
+        if (filePath.match(/includes/) || filePath.match(/mixins/) || filePath.match(/\/pug\/layouts\//) || filePath.match(/\/pug\/partials\//)) {
             return _renderAllPug();
         }
         return renderPug(filePath);
     }
-    if (!filePath.match(/includes/) && !filePath.match(/mixins/) && !filePath.match(/\/pug\/layouts\//)) {
+    if (!filePath.match(/includes/) && !filePath.match(/mixins/) && !filePath.match(/\/pug\/layouts\//) && !filePath.match(/\/pug\/partials\//)) {
         return renderPug(filePath);
     }
 }
