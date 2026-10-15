@@ -14,19 +14,19 @@ cd startbootstrap-shop-homepage
 npm ci
 ```
 
-Configura `.env` con el número de WhatsApp, incluyendo código de país y solo dígitos:
+Copia `.env.example` a `.env` y configura el número de WhatsApp, incluyendo código de país y solo dígitos:
 
 ```dotenv
 WPP_ID=573001234567
 ```
 
-El número de ejemplo debe sustituirse por el del vendedor. `WPP_ID` se incorpora en los enlaces públicos al compilar; no es un secreto. Este repositorio ya tiene un `.env` versionado: trata su contenido como público y no guardes credenciales en él.
+El número de ejemplo debe sustituirse por el del vendedor. `WPP_ID` se incorpora en los enlaces públicos al compilar; no es un secreto. `.env` y sus variantes locales se ignoran en Git; solo se versiona `.env.example`, con `WPP_ID` vacío. Eliminar `.env` de la rama no borra sus versiones históricas. No guardes credenciales en el frontend.
 
 ```sh
 npm start
 ```
 
-Este comando compila el sitio, inicia BrowserSync y observa las fuentes. Usa la URL local que muestra la terminal. Los cambios de productos, traducciones, fondos y componentes compartidos reconstruyen las páginas. Si cambias `.env`, reinicia el proceso para recompilar con el nuevo número.
+Este comando compila el sitio, inicia BrowserSync y observa las fuentes. Usa la URL `http://127.0.0.1:3000` que muestra la terminal (si el puerto está ocupado, consulta el puerto elegido). El servidor escucha exclusivamente en `127.0.0.1`; la interfaz de administración y los túneles están desactivados. La configuración compartida está en `scripts/browser-sync-config.js`. `npm run start:debug` mantiene el mismo aislamiento y limita el inspector a `127.0.0.1:9229`. Los cambios de productos, traducciones, fondos y componentes compartidos reconstruyen las páginas. Si cambias `.env`, reinicia el proceso para recompilar con el nuevo número.
 
 ## Comandos
 
@@ -81,6 +81,10 @@ El repositorio está preparado para que un agente pueda continuar el trabajo con
 - [SKILLS.md](SKILLS.md): procedimientos para inventario, fotos, idiomas, interfaz y entrega de PRs.
 
 El ciclo de trabajo es **inspeccionar → implementar → validar → revisar el diff → actualizar el PR**. La IA ayuda a ejecutar los cambios; los datos comerciales provienen del responsable del catálogo. El sitio generado funciona sin servicios de IA.
+
+Para revisar dependencias sin cambiar el lockfile, ejecuta `npm audit`; mantén sus correcciones verificadas mediante build y tests.
+
+La revisión del 15 de octubre de 2026 redujo los paquetes con alertas de 29 a 6. Las seis alertas restantes derivan de `braces` (GHSA-vfj7-8cjw-p6xm), que no tiene una versión corregida publicada. Afectan al árbol de desarrollo de BrowserSync/Chokidar/ShellJS; los patrones usados por el proyecto son fijos y el servidor queda limitado a loopback. `npm audit --omit=dev` reportó cero alertas. Esto no convierte las alertas de desarrollo en resueltas: deben reevaluarse cuando los mantenedores publiquen correcciones. No fuerces downgrades o exclusiones de auditoría para ocultarlas. Publica solo `dist/`: `npm start` y `start:debug` son herramientas de desarrollo local.
 
 Antes de entregar un cambio:
 

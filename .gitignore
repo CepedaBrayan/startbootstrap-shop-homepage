@@ -4,3 +4,8 @@ node_modules
 # all dist files
 dist/*
 dist/**/*
+
+# Local environment files; only the blank template is versioned.
+.env
+.env.*
+!.env.example

@@ -63,8 +63,8 @@ Usa siempre `#ffffff` para todas las fotos. El catálogo utiliza un fondo blanco
 ## 5. Preparar un PR revisable
 
 1. Comprueba la rama y el PR autorizados; toma el estado remoto actual como base y conserva cambios ajenos.
-2. Ejecuta build, tests y revisión de whitespace descritos en `AGENTS.md`.
-3. Revisa los cambios de datos, rutas y traducciones además del código. No incluyas `dist/`, `node_modules`, archivos temporales ni credenciales.
+2. Ejecuta build, tests y revisión de whitespace descritos en `AGENTS.md`. Para cambios de dependencias, ejecuta también `npm audit` y comprueba el arranque de desarrollo; el servidor debe escuchar solo en `127.0.0.1`, sin UI ni túneles.
+3. Revisa los cambios de datos, rutas y traducciones además del código. No incluyas `dist/`, `node_modules`, archivos temporales, `.env` ni credenciales. La plantilla `.env.example` debe contener `WPP_ID=` sin valor.
 4. Resume el resultado final y sus pruebas; señala cualquier comprobación bloqueada sin presentarla como aprobada.
 5. Sube el commit a la rama del PR, verifica que contenga el cambio y deja la fusión para cuando esté solicitada.
 
