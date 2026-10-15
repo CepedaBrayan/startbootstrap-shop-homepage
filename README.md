@@ -65,7 +65,7 @@ Cada producto tiene `id`, `name`, `quantity`, `size`, `sizeUnit`, `price` e `ima
 
 Mantén IDs estables al renombrar productos. Añade o actualiza `products.<id>` en todos los idiomas. Separa variantes con stock y fotos propios: las medias Adidas blancas, Puma blancas y Puma negras son productos distintos.
 
-La primera foto de `images` es la portada; las demás aparecen en el modal. Conserva formato y resolución originales. Las fotos se muestran completas y proporcionadas. El fondo del espacio sobrante se configura por ruta en `image-backgrounds.json`, con un color hexadecimal de seis dígitos: blanco, negro o el tono uniforme del borde de la imagen. El fondo permanece igual al cambiar de tema. El respaldo para una ruta ausente o un color inválido es blanco. No se detectan colores automáticamente en el navegador.
+La primera foto de `images` es la portada; las demás aparecen en el modal. Conserva formato y resolución originales. Las fotos se muestran completas y proporcionadas. El fondo del espacio sobrante se configura por ruta en `image-backgrounds.json`, con un color hexadecimal de seis dígitos: usa siempre `#ffffff` en todas las rutas para mantener un fondo blanco uniforme. El fondo permanece blanco al cambiar de tema. El respaldo para una ruta ausente o un color inválido es blanco. No se detectan colores automáticamente en el navegador.
 
 ## Idiomas y tema
 

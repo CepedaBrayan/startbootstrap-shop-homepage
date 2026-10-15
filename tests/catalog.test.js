@@ -26,9 +26,9 @@ test('Catalog IDs, inventory and image references are valid', () => {
     }
 });
 
-test('Every configured image background is a hex color for an existing asset', () => {
+test('Every configured image background is white and references an existing asset', () => {
     for (const [image, color] of Object.entries(backgrounds)) {
-        assert.match(color, /^#[0-9a-f]{6}$/i, image);
+        assert.equal(color, '#ffffff', `Photo backdrop must be white: ${image}`);
         const file = path.resolve(assetRoot, image);
         assert(file.startsWith(assetRoot + path.sep), image);
         assert(fs.statSync(file).isFile(), image);

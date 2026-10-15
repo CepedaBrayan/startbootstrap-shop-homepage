@@ -8,7 +8,7 @@ Mantén un catálogo estático para comprar por WhatsApp, con Apparel y Garage S
 
 - `src/data/products.json`: fuente de productos, cantidades, precios COP y rutas de fotos.
 - `src/data/translations.json`: mensajes por idioma y nombres por ID de producto.
-- `src/data/image-backgrounds.json`: fondo hexadecimal por ruta de imagen.
+- `src/data/image-backgrounds.json`: fondo blanco uniforme por ruta de imagen.
 - `src/pug/`: páginas y componentes compartidos; `partials/catalog-mixins.pug` genera tarjetas y modales.
 - `src/scss/styles.scss`: estilos Bootstrap y superficies del sitio.
 - `src/js/i18n.js` y `src/js/scripts.js`: idioma y tema, respectivamente.
@@ -27,7 +27,7 @@ Mantén un catálogo estático para comprar por WhatsApp, con Apparel y Garage S
 - Conserva IDs estables al cambiar nombres. Sincroniza `products.<id>` en todos los idiomas.
 - No inventes precios, tallas, cantidades, garantías ni atributos del producto. Respeta el precio unitario y distingue pares de paquetes.
 - Conserva los archivos de fotos originales, su resolución y sus bytes salvo que se solicite una transformación. No amplíes artificialmente imágenes pequeñas para aparentar calidad.
-- Las fotos deben verse completas, con sus proporciones. El área sobrante usa el fondo de esa foto, independiente del tema del sitio. Configura cada ruta en `image-backgrounds.json`; el valor de respaldo es blanco.
+- Las fotos deben verse completas, con sus proporciones. El área sobrante siempre usa blanco, independiente del producto y del tema del sitio. Configura cada ruta en `image-backgrounds.json`; el valor de respaldo es blanco.
 - Añade textos visibles y etiquetas accesibles al diccionario. Conserva los placeholders y el idioma de los mensajes de WhatsApp.
 - Mantén tema e idioma independientes y persistentes; conserva los enlaces relativos y el redireccionamiento de `shoes.html`.
 - Reutiliza los mixins y los estilos existentes. Evita añadir frameworks, servicios o dependencias sin necesidad concreta.

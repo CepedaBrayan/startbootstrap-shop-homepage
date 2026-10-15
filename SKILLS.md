@@ -29,11 +29,11 @@ Este es el manual operativo del repositorio para agentes y desarrolladores. Comp
 ```json
 {
   "apparel/example-1.webp": "#ffffff",
-  "apparel/example-2.jpg": "#000000"
+  "apparel/example-2.jpg": "#ffffff"
 }
 ```
 
-Elige blanco para fondos blancos, negro para fondos negros, o un gris preciso cuando el borde sea uniforme. Para escenas con fondos variados, usa un neutro acorde y revisa el resultado. Es una configuración editorial por imagen; no hay detección automática en el navegador. Las tarjetas y los modales usan `object-fit: contain`; el fondo llena las bandas sobrantes sin recortar ni estirar la foto. Un color ausente o inválido usa blanco.
+Usa siempre `#ffffff` para todas las fotos. El catálogo utiliza un fondo blanco uniforme, independiente del producto, los colores de la foto y el tema. No hay detección automática en el navegador. Las tarjetas y los modales usan `object-fit: contain`; el fondo llena las bandas sobrantes sin recortar ni estirar la foto. Un color ausente o inválido usa blanco.
 
 7. Reconstruye, comprueba la carga de cada foto y recorre los controles del modal. Revisa imágenes verticales y horizontales en ambos temas y tamaños de pantalla.
 8. Compara hashes de los originales y las copias para confirmar que no cambiaron los bytes cuando se exige calidad original.
@@ -53,7 +53,7 @@ Elige blanco para fondos blancos, negro para fondos negros, o un gris preciso cu
 ## 4. Modificar interfaz o tema
 
 1. Localiza la página Pug o el mixin compartido que genera el elemento.
-2. Usa las variables `--shop-*` para superficies, texto y bordes del sitio. Los fondos `--product-image-background` pertenecen a las fotos y no cambian con el tema.
+2. Usa las variables `--shop-*` para superficies, texto y bordes del sitio. Los fondos `--product-image-background` de las fotos siempre son blancos y no cambian con el tema.
 3. Conserva botones semánticos, nombres accesibles, foco visible y controles de cierre/navegación de modales.
 4. Mantén la inicialización de idioma antes de `scripts.js`; el tema usa `shopI18n` y se aplica en el encabezado del documento para evitar un destello claro.
 5. Revisa home, Apparel, Garage Sale y modales en ambos temas, con anchos de móvil y escritorio. Cambia idioma y tema por separado y comprueba la persistencia.
