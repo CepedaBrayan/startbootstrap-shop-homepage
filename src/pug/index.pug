@@ -5,7 +5,9 @@ html(lang='en')
     meta(name='color-scheme', content='light dark')
     meta(name='darkreader-lock')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-    title WhatsApp Shop
+    title(data-i18n='home.title') WhatsApp Shop
+    include partials/translations.pug
+    script(src='js/i18n.js')
     script(src='js/scripts.js')
 
     link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
@@ -17,15 +19,17 @@ html(lang='en')
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container.px-4.px-lg-5
         a.navbar-brand(href='#') WhatsApp Shop
-        include partials/theme-toggle.pug
+        .d-flex.gap-2.flex-wrap
+          include partials/language-toggle.pug
+          include partials/theme-toggle.pug
 
     // Main section
     main.flex-grow-1.d-flex.align-items-center
       .container.px-4.px-lg-5
         .row.justify-content-center.text-center.mb-4
           .col-lg-8
-            h1.display-5.fw-bolder.mb-3 Choose a Category
-            p.lead.text-muted Select where you want to go
+            h1.display-5.fw-bolder.mb-3(data-i18n='home.heading') Choose a Category
+            p.lead.text-muted(data-i18n='home.subtitle') Select where you want to go
 
         .row.gx-4.gx-lg-5.justify-content-center
 
@@ -36,9 +40,10 @@ html(lang='en')
                 img.card-img-top.product-image(
                   src='assets/img/shoes/hail-clay-1.avif'
                   alt='Apparel'
+                  data-i18n-alt='category.apparel'
                 )
               .card-body.text-center
-                h4.fw-bolder Apparel
+                h4.fw-bolder(data-i18n='category.apparel') Apparel
 
           // Garage Card
           .col-md-6.col-lg-4.mb-4
@@ -47,9 +52,10 @@ html(lang='en')
                 img.card-img-top.product-image(
                   src='assets/img/garage/xbox-2.jpg'
                   alt='Garage Sale'
+                  data-i18n-alt='category.garage'
                 )
               .card-body.text-center
-                h4.fw-bolder Garage Sale
+                h4.fw-bolder(data-i18n='category.garage') Garage Sale
 
     footer.py-3.bg-light
       .container

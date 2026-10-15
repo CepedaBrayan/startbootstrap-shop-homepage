@@ -73,11 +73,12 @@ body {
 .navbar-light .navbar-brand:focus { color: var(--shop-text); }
 .navbar-brand { white-space: normal; }
 
-.theme-toggle {
+.theme-toggle, .language-toggle {
   color: var(--shop-text);
   border: 1px solid var(--shop-border);
 }
-.theme-toggle:hover, .theme-toggle:focus-visible {
+.theme-toggle:hover, .theme-toggle:focus-visible,
+.language-toggle:hover, .language-toggle:focus-visible {
   color: var(--shop-text);
   background-color: var(--shop-surface);
   border-color: var(--shop-text);

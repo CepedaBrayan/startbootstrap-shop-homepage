@@ -67,3 +67,11 @@ Start Bootstrap is based on the [Bootstrap](https://getbootstrap.com/) framework
 ## Copyright and License
 
 Copyright 2013-2023 Start Bootstrap LLC. Code released under the [MIT](https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE) license.
+
+## Languages
+
+Edit `src/data/translations.json` to maintain the English and Spanish text, including product names. The navbar language button cycles through all entries in `languages`. The first visit uses a supported browser language, falling back to `defaultLanguage`; explicit choices persist across pages. Prices stay in COP with Colombian number formatting.
+
+To add French, copy the `en` entry to `fr`, set `name` to `Français` and `locale` to `fr-FR`, and translate its `messages` while preserving keys and placeholders such as `{name}`, `{size}` and `{count}`. No JavaScript change is needed. Missing messages fall back to English. Run `node --test tests/translations.test.js` to check complete translations and matching placeholders.
+
+Use `data-i18n="message.key"` for text and `data-i18n-alt`, `data-i18n-aria-label` or `data-i18n-content` for attributes. Interpolation values go in `data-i18n-params` as JSON. Rebuild with `npm run build`; during `npm start`, dictionary edits rebuild the pages automatically. The dictionary is embedded at build time so static hosting needs no translation API or extra JSON fetch.

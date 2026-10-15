@@ -1,0 +1,2 @@
+//- Embed the dictionary at build time so static/file:// previews need no fetch.
+script#shop-translations(type='application/json')!= JSON.stringify(translations).replace(/</g, '\\u003c')

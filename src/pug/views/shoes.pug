@@ -5,8 +5,10 @@ html(lang='en')
     meta(name='color-scheme', content='light dark')
     meta(name='darkreader-lock')
     meta(http-equiv='refresh', content='0;url=apparel.html')
-    title Apparel - WhatsApp Shop
+    title(data-i18n='apparel.title') Apparel - WhatsApp Shop
+    include ../partials/translations.pug
+    script(src='../js/i18n.js')
     script(src='../js/scripts.js')
     link(href='../css/styles.css', rel='stylesheet')
   body
-    a(href='apparel.html') Go to Apparel
+    a(href='apparel.html', data-i18n='redirect.apparel') Go to Apparel

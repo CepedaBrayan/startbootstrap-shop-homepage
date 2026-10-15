@@ -14,9 +14,9 @@
         document.documentElement.dataset.theme = theme;
         document.querySelectorAll('.theme-toggle').forEach(function (button) {
             const dark = theme === 'dark';
-            button.textContent = dark ? 'Theme: Dark' : 'Theme: Light';
-            button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
-            button.setAttribute('aria-label', dark ? 'Activate light mode' : 'Activate dark mode');
+            button.textContent = window.shopI18n.t(dark ? 'theme.dark' : 'theme.light');
+            button.title = window.shopI18n.t(dark ? 'theme.activateLight' : 'theme.activateDark');
+            button.setAttribute('aria-label', button.title);
             button.setAttribute('aria-pressed', String(dark));
         });
     }
@@ -38,6 +38,9 @@
                 } catch (_) {}
             });
         });
+    });
+    document.addEventListener('shop:languagechange', function () {
+        applyTheme(currentTheme());
     });
     systemTheme.addEventListener('change', function () {
         if (!selectedTheme) applyTheme(currentTheme());
