@@ -149,3 +149,23 @@ body {
 :root[data-theme='dark'] .catalog-sort {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f1f4f8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
 }
+
+.ai-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  margin-top: .875rem;
+  padding: .2rem .625rem;
+  border: 1px solid var(--shop-border);
+  border-radius: 999px;
+  color: var(--shop-muted);
+  font-size: .6875rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.5;
+}
+
+.ai-credit-mark {
+  font-size: .875rem;
+  line-height: 1;
+}
