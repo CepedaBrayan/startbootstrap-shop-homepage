@@ -245,7 +245,11 @@
       "size": null,
       "sizeUnit": null,
       "price": 50000,
-      "images": []
+      "images": [
+        "garage/shopsense-bag-1.jpg",
+        "garage/shopsense-bag-2.jpg"
+      ],
+      "imageFit": "contain"
     },
     {
       "id": "black-box-for-electronical-devices",
