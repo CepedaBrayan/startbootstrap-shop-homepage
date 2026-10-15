@@ -1,0 +1,281 @@
+{
+  "apparel": [
+    {
+      "id": "shai-001-masi-blue",
+      "name": "SHAI 001 - Masi blue",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 700000,
+      "images": [
+        "shoes/masi-blue-1.jpg",
+        "shoes/masi-blue-2.webp"
+      ]
+    },
+    {
+      "id": "shai-001-hail-clay",
+      "name": "SHAI 001 - Hail Clay",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 700000,
+      "images": [
+        "shoes/hail-clay-1.avif",
+        "shoes/hail-clay-2.webp"
+      ]
+    },
+    {
+      "id": "adidas-water-bottle",
+      "name": "Adidas water bottle",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 90000,
+      "images": []
+    },
+    {
+      "id": "ae-blue",
+      "name": "AE blue",
+      "quantity": 1,
+      "size": "9",
+      "sizeUnit": "US",
+      "price": 450000,
+      "images": [
+        "shoes/ae-2-blue-1.webp",
+        "shoes/ae-2-blue-2.webp"
+      ]
+    },
+    {
+      "id": "adidas-tiro-bag",
+      "name": "Adidas tiro bag",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 95000,
+      "images": []
+    },
+    {
+      "id": "adidas-xl-bag-black-and-blue",
+      "name": "Adidas xl bag - black and blue",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 220000,
+      "images": []
+    },
+    {
+      "id": "adidas-women-duramo-running",
+      "name": "Adidas women duramo running",
+      "quantity": 1,
+      "size": "7",
+      "sizeUnit": "US",
+      "price": 200000,
+      "images": []
+    },
+    {
+      "id": "reebok-skyblue-sneakers",
+      "name": "Reebok skyblue sneakers",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 260000,
+      "images": [
+        "shoes/reebook-blue-2.jpg",
+        "shoes/reebook-blue-1.jpg"
+      ]
+    },
+    {
+      "id": "adidas-white-women-sneakers",
+      "name": "Adidas white women sneakers",
+      "quantity": 3,
+      "size": "7",
+      "sizeUnit": "US",
+      "price": 280000,
+      "images": [
+        "shoes/adidas-women-1.avif",
+        "shoes/adidas-women-2.avif"
+      ]
+    },
+    {
+      "id": "ae-all-star-orange",
+      "name": "AE All star Orange",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 500000,
+      "images": []
+    },
+    {
+      "id": "ae-all-star-multicolor",
+      "name": "AE All star Multicolor",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 500000,
+      "images": []
+    },
+    {
+      "id": "ae-yellow",
+      "name": "AE Yellow",
+      "quantity": 1,
+      "size": "8",
+      "sizeUnit": "US",
+      "price": 450000,
+      "images": [
+        "shoes/ae-2-yellow-3.avif",
+        "shoes/ae-2-yellow-1.avif",
+        "shoes/ae-2-yellow-2.avif"
+      ]
+    },
+    {
+      "id": "adidas-women-pink-jogger",
+      "name": "Adidas women pink jogger",
+      "quantity": 1,
+      "size": "S",
+      "sizeUnit": null,
+      "price": 200000,
+      "images": []
+    },
+    {
+      "id": "adidas-women-gray-hoodie",
+      "name": "Adidas women gray hoodie",
+      "quantity": 1,
+      "size": "S",
+      "sizeUnit": null,
+      "price": 200000,
+      "images": []
+    },
+    {
+      "id": "adibackpack",
+      "name": "Adibackpack",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 100000,
+      "images": []
+    },
+    {
+      "id": "adidas-basic-men-shoes",
+      "name": "Adidas basic men shoes",
+      "quantity": 3,
+      "size": "10",
+      "sizeUnit": "US",
+      "price": 200000,
+      "images": []
+    },
+    {
+      "id": "adidas-white-men-shirt",
+      "name": "Adidas white men shirt",
+      "quantity": 1,
+      "size": "M",
+      "sizeUnit": null,
+      "price": 150000,
+      "images": []
+    },
+    {
+      "id": "adidas-men-shoes-casual",
+      "name": "Adidas men shoes casual",
+      "quantity": 1,
+      "size": "8.5",
+      "sizeUnit": "US",
+      "price": 250000,
+      "images": []
+    },
+    {
+      "id": "adidas-men-jogger-regular-fit-black",
+      "name": "Adidas men jogger regular fit - black",
+      "quantity": 1,
+      "size": "M",
+      "sizeUnit": null,
+      "price": 150000,
+      "images": []
+    },
+    {
+      "id": "adidas-black-long-sleeve-shirt-fit",
+      "name": "Adidas black long sleeve shirt - fit",
+      "quantity": 1,
+      "size": "M",
+      "sizeUnit": null,
+      "price": 100000,
+      "images": []
+    },
+    {
+      "id": "puma-premium-socks",
+      "name": "Puma Premium Socks",
+      "quantity": 9,
+      "size": "S-L",
+      "sizeUnit": null,
+      "price": 25000,
+      "images": [
+        "shoes/socks-1.jpg",
+        "shoes/socks-2.jpg",
+        "shoes/socks-3.jpg"
+      ]
+    }
+  ],
+  "garage": [
+    {
+      "id": "xbox-series-s-control",
+      "name": "Xbox series s + control",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 1800000,
+      "images": [
+        "garage/xbox-2.jpg",
+        "garage/xbox-1.jpg"
+      ]
+    },
+    {
+      "id": "router-xiaomi-high-speed",
+      "name": "Router Xiaomi high speed",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 100000,
+      "images": [
+        "garage/router-1.jpg",
+        "garage/router-2.jpg"
+      ]
+    },
+    {
+      "id": "shopsense-ai-shopping-bag-heavy",
+      "name": "Shopsense ai - shopping bag - heavy",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 50000,
+      "images": []
+    },
+    {
+      "id": "black-box-for-electronical-devices",
+      "name": "Black box for electronical devices",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 50000,
+      "images": [
+        "garage/black-box-1.jpg",
+        "garage/black-box-2.jpg"
+      ]
+    },
+    {
+      "id": "cooler-for-small-pc-usb-connection",
+      "name": "Cooler for small pc - usb connection",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 80000,
+      "images": []
+    },
+    {
+      "id": "bloodborne-ps4-brand-new-but-plastic-opened",
+      "name": "Bloodborne ps4 - brand new - but plastic opened",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 50000,
+      "images": []
+    }
+  ]
+}

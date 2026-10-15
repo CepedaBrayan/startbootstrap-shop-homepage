@@ -4,6 +4,7 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
     title WhatsApp Shop
+    script(src='js/scripts.js')
 
     link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
     link(href='css/styles.css', rel='stylesheet')
@@ -14,6 +15,7 @@ html(lang='en')
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container.px-4.px-lg-5
         a.navbar-brand(href='#') WhatsApp Shop
+        include partials/theme-toggle.pug
 
     // Main section
     main.flex-grow-1.d-flex.align-items-center
@@ -25,16 +27,16 @@ html(lang='en')
 
         .row.gx-4.gx-lg-5.justify-content-center
 
-          // Shoes Card
+          // Apparel Card
           .col-md-6.col-lg-4.mb-4
             .card.h-100.shadow-sm
-              a(href='views/shoes.html')
+              a(href='views/apparel.html')
                 img.card-img-top.product-image(
                   src='assets/img/shoes/hail-clay-1.avif'
-                  alt='Shoes'
+                  alt='Apparel'
                 )
               .card-body.text-center
-                h4.fw-bolder Shoes
+                h4.fw-bolder Apparel
 
           // Garage Card
           .col-md-6.col-lg-4.mb-4

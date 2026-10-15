@@ -13,7 +13,8 @@ module.exports = function renderPug(filePath) {
     const html = pug.renderFile(filePath, {
         doctype: 'html',
         filename: filePath,
-        basedir: srcPath
+        basedir: srcPath,
+        products: JSON.parse(fs.readFileSync(upath.join(srcPath, 'data/products.json'), 'utf8'))
     });
 
     const destPathDirname = upath.dirname(destPath);

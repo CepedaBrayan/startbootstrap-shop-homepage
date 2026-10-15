@@ -1,0 +1,35 @@
+mixin productCard(product)
+  .col.mb-5
+    .card.h-100
+      if product.images.length
+        button.product-photo(type='button', data-bs-toggle='modal', data-bs-target=`#modal-${product.id}`, aria-label=`View photos: ${product.name}`)
+          img.card-img-top.product-image(src=`../assets/img/${product.images[0]}`, alt=product.name, loading='lazy')
+      else
+        .product-placeholder(role='img', aria-label=`${product.name}: photo coming soon`) Foto próximamente
+      .card-body.p-4.text-center
+        h5.fw-bolder= product.name
+        if product.size
+          p.mb-2 Size #{product.size}#{product.sizeUnit ? ' ' + product.sizeUnit : ''}
+        p.mb-2.text-muted #{product.quantity} #{product.quantity === 1 ? 'disponible' : 'disponibles'}
+        p.mb-0= '$' + product.price.toLocaleString('es-CO') + ' COP' + (product.id === 'puma-premium-socks' ? ' / par' : '')
+      .card-footer.p-4.pt-0.border-top-0.bg-transparent.text-center
+        a.btn.btn-success(href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa ' + product.name + (product.size ? ' (talla ' + product.size + (product.sizeUnit ? ' ' + product.sizeUnit : '') + ')' : ''))}`, target='_blank', rel='noopener noreferrer') WhatsApp
+
+mixin productModal(product)
+  .modal.fade(id=`modal-${product.id}`, tabindex='-1', aria-labelledby=`title-${product.id}`, aria-hidden='true')
+    .modal-dialog.modal-lg.modal-dialog-centered
+      .modal-content
+        .modal-header
+          h5.modal-title(id=`title-${product.id}`)= product.name
+          button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+        .modal-body
+          .carousel.slide(id=`carousel-${product.id}`)
+            .carousel-inner
+              each image, index in product.images
+                .carousel-item(class=index === 0 ? 'active' : '')
+                  img.d-block.w-100(src=`../assets/img/${image}`, alt=`${product.name} — photo ${index + 1}`, loading='lazy')
+            if product.images.length > 1
+              button.carousel-control-prev(type='button', data-bs-target=`#carousel-${product.id}`, data-bs-slide='prev', aria-label='Previous photo')
+                span.carousel-control-prev-icon(aria-hidden='true')
+              button.carousel-control-next(type='button', data-bs-target=`#carousel-${product.id}`, data-bs-slide='next', aria-label='Next photo')
+                span.carousel-control-next-icon(aria-hidden='true')
