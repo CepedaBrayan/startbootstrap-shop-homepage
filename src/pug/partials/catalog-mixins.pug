@@ -3,7 +3,7 @@ mixin productCard(product)
     .card.h-100
       if product.images.length
         button.product-photo(type='button', data-bs-toggle='modal', data-bs-target=`#modal-${product.id}`, aria-label=`View photos: ${product.name}`, data-i18n-aria-label='photo.view', data-product-id=product.id)
-          img.card-img-top.product-image(src=`../assets/img/${product.images[0]}`, alt=product.name, data-i18n-alt=`products.${product.id}`, loading='lazy')
+          img.card-img-top.product-image(class=product.imageFit === 'contain' ? 'product-image-contain' : '', src=`../assets/img/${product.images[0]}`, alt=product.name, data-i18n-alt=`products.${product.id}`, loading='lazy')
       else
         .product-placeholder(role='img', aria-label=`${product.name}: photo coming soon`, data-i18n='photo.pending', data-i18n-aria-label='photo.pendingAlt', data-product-id=product.id) Photo coming soon
       .card-body.p-4.text-center
@@ -30,7 +30,7 @@ mixin productModal(product)
             .carousel-inner
               each image, index in product.images
                 .carousel-item(class=index === 0 ? 'active' : '')
-                  img.d-block.w-100(src=`../assets/img/${image}`, alt=`${product.name} — photo ${index + 1}`, data-i18n-alt='photo.alt', data-product-id=product.id, data-i18n-params=JSON.stringify({number: index + 1}), loading='lazy')
+                  img.d-block.w-100(class=product.imageFit === 'contain' ? 'product-image-contain' : '', src=`../assets/img/${image}`, alt=`${product.name} — photo ${index + 1}`, data-i18n-alt='photo.alt', data-product-id=product.id, data-i18n-params=JSON.stringify({number: index + 1}), loading='lazy')
             if product.images.length > 1
               button.carousel-control-prev(type='button', data-bs-target=`#carousel-${product.id}`, data-bs-slide='prev', aria-label='Previous photo', data-i18n-aria-label='photo.previous')
                 span.carousel-control-prev-icon(aria-hidden='true')

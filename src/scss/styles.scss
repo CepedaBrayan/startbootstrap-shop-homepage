@@ -115,3 +115,10 @@ body {
   background-color: var(--shop-subtle);
   color: var(--shop-text);
 }
+
+/* Keep the full portrait product photos visible without cropping. */
+.card-img-top.product-image.product-image-contain,
+.modal-body .carousel-item img.product-image-contain {
+  object-fit: contain;
+  background-color: var(--shop-subtle);
+}

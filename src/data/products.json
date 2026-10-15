@@ -266,7 +266,10 @@
       "size": null,
       "sizeUnit": null,
       "price": 80000,
-      "images": []
+      "images": [
+        "garage/cooler-1.jpg"
+      ],
+      "imageFit": "contain"
     },
     {
       "id": "bloodborne-ps4-brand-new-but-plastic-opened",
@@ -275,7 +278,10 @@
       "size": null,
       "sizeUnit": null,
       "price": 50000,
-      "images": []
+      "images": [
+        "garage/bloodborne-1.jpg"
+      ],
+      "imageFit": "contain"
     }
   ]
 }
