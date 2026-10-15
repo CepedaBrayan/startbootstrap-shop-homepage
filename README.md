@@ -75,7 +75,7 @@ The first image is the cover; remaining images appear in the modal. Preserve ori
 
 Apparel and Garage Sale use the same `productCatalog` mixin and `catalog-sort.js`. The selector offers low-to-high pricing by default and high-to-low pricing. It uses numeric `data-product-price` values, keeps the original relative order of equally priced items, and moves existing cards to preserve their modal targets and purchase links.
 
-Changing language or theme retains the current sorting selection. Labels are defined in the translation dictionary, and the selector follows the active theme. The category selection page shares the catalog header, margins and card spacing for a consistent mobile layout.
+Changing language or theme retains the current sorting selection. Labels are defined in the translation dictionary, and the selector follows the active theme. The category selection page shares the catalog header, margins and card spacing on mobile. On desktop (992px and wider), it becomes a viewport-height landing page with side-by-side category cards, flexible image areas and a visible footer, without vertical scrolling. Smaller screens keep the stacked, scrollable layout.
 
 All three main pages share a footer with a small, understated `powered by AI assisted` credit. The requested credit remains in English in both site languages and adapts to the active theme.
 
