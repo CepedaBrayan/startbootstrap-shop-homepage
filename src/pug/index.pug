@@ -13,6 +13,11 @@ html(lang='en')
     link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
     link(href='css/styles.css', rel='stylesheet')
 
+    // Vercel Web Analytics
+    script.
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    script(defer, src='/_vercel/insights/script.js')
+
   body.d-flex.flex-column(style='min-height:100vh')
 
     // Navbar
