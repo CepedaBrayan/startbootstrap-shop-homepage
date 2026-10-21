@@ -71,6 +71,8 @@ Keep IDs stable when renaming products, and update `products.<id>` in every lang
 
 The first image is the cover; remaining images appear in the modal. Preserve original formats, resolution and bytes unless a transformation is requested. Photos retain their proportions and remain fully visible. Configure every image path in `image-backgrounds.json` with `#ffffff` so all unused image space stays white in both themes. Missing or invalid values fall back to white. There is no automatic browser-side color detection.
 
+The Xiaomi Smart Band 8 Pro gallery uses six unchanged portrait JPEGs and one self-contained portrait SVG wrapping the original landscape JPEG. The SVG rotates the embedded photo 90° counterclockwise without cropping, recompression or external image requests; its original JPEG bytes remain intact.
+
 ## Price sorting and page layout
 
 Apparel and Garage Sale use the same `productCatalog` mixin and `catalog-sort.js`. The selector offers low-to-high pricing by default and high-to-low pricing. It uses numeric `data-product-price` values, keeps the original relative order of equally priced items, and moves existing cards to preserve their modal targets and purchase links.
