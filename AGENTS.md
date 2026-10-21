@@ -1,44 +1,44 @@
-# Instrucciones para agentes de desarrollo
+# Development agent instructions
 
-Este archivo aplica a todo el repositorio. Lee primero [README.md](README.md) para entender el producto y [SKILLS.md](SKILLS.md) para ejecutar los procedimientos. Las instrucciones explícitas del usuario tienen prioridad.
+These instructions apply to the entire repository. Read [README.md](README.md) first to understand the product, then [SKILLS.md](SKILLS.md) for operational procedures. Explicit user instructions take priority.
 
-## Objetivo y arquitectura
+## Purpose and architecture
 
-Mantén un catálogo estático para comprar por WhatsApp, con Apparel y Garage Sale, traducciones y temas persistentes. El desarrollo se apoya en IA: el agente inspecciona fuentes, implementa cambios acotados y presenta evidencia; el responsable del catálogo decide inventario, precios y publicación.
+Maintain a static WhatsApp shopping catalog with Apparel and Garage Sale, translations, and persistent theme preferences. AI assists development: the agent inspects source files, implements scoped changes, and presents evidence. The catalog owner decides inventory, prices, and publication.
 
-- `src/data/products.json`: fuente de productos, cantidades, precios COP y rutas de fotos.
-- `src/data/translations.json`: mensajes por idioma y nombres por ID de producto.
-- `src/data/image-backgrounds.json`: fondo blanco uniforme por ruta de imagen.
-- `src/pug/`: páginas y componentes compartidos; `partials/catalog-mixins.pug` genera tarjetas y modales.
-- `src/scss/styles.scss`: estilos Bootstrap y superficies del sitio.
-- `src/js/i18n.js` y `src/js/scripts.js`: idioma y tema, respectivamente.
-- `scripts/`: compilación y desarrollo. `dist/` es salida generada e ignorada por Git.
+- `src/data/products.json`: product inventory, quantities, COP prices, and photo paths.
+- `src/data/translations.json`: messages by language and product names keyed by product ID.
+- `src/pug/`: pages and shared components; `partials/catalog-mixins.pug` renders cards and modals.
+- `src/scss/styles.scss`: Bootstrap styles, site surfaces, and the shared white photo background, defined once with `--product-image-background`.
+- `src/js/i18n.js` and `src/js/scripts.js`: language and theme behavior, respectively.
+- `scripts/`: build and development tools. `dist/` is generated output ignored by Git.
 
-## Antes de cambiar código
+## Before changing code
 
-1. Revisa `git status`, la rama de trabajo y el destino del PR. Conserva los cambios previos del usuario y del agente.
-2. Lee los archivos que determinan el comportamiento solicitado. Usa el estado actual del repositorio como evidencia.
-3. Define resultados verificables: productos afectados, idioma, tema, vista móvil y navegación cuando aplique.
-4. Si una foto o dato tiene una correspondencia ambigua que puede alterar una venta, resuelve esa duda antes de asignarlo. Los nombres de archivos son pistas; comprueba también el contenido.
+1. Check `git status`, the working branch, and the PR target. Preserve existing user and agent changes.
+2. Read the files that determine the requested behavior. Use the current repository state as evidence.
+3. Define verifiable outcomes: affected products, language, theme, mobile layout, and navigation where applicable.
+4. Resolve ambiguous photo or data assignments before using them if a mistake could affect a sale. Filenames provide clues; inspect the content as well.
 
-## Reglas de implementación
+## Implementation rules
 
-- Edita las fuentes y reconstruye. Nunca corrijas una página exclusivamente en `dist/`.
-- Conserva IDs estables al cambiar nombres. Sincroniza `products.<id>` en todos los idiomas.
-- No inventes precios, tallas, cantidades, garantías ni atributos del producto. Respeta el precio unitario y distingue pares de paquetes.
-- Conserva los archivos de fotos originales, su resolución y sus bytes salvo que se solicite una transformación. No amplíes artificialmente imágenes pequeñas para aparentar calidad.
-- Las fotos deben verse completas, con sus proporciones. El área sobrante siempre usa blanco, independiente del producto y del tema del sitio. Configura cada ruta en `image-backgrounds.json`; el valor de respaldo es blanco.
-- Añade textos visibles y etiquetas accesibles al diccionario. Conserva los placeholders y el idioma de los mensajes de WhatsApp.
-- Mantén tema e idioma independientes y persistentes; conserva los enlaces relativos y el redireccionamiento de `shoes.html`.
-- Reutiliza los mixins y los estilos existentes. Evita añadir frameworks, servicios o dependencias sin necesidad concreta.
-- Mantén `vercel.json` limitado a despliegues Git de `master`. Los releases se publican solo para PRs fusionados a `master`, desde el commit de fusión exacto, tras build/tests y subida completa del ZIP fuente. No uses `pull_request_target` para ejecutar código de una rama externa.
-- Conserva BrowserSync e inspector limitados a loopback y la UI/túneles desactivados. Usa la configuración compartida para ambos modos.
-- Mantén `.env` fuera de Git y `.env.example` con `WPP_ID=` vacío.
-- `WPP_ID` se incorpora en enlaces públicos durante la compilación. Nunca uses variables del frontend para guardar secretos ni expongas credenciales en logs, commits o documentación.
+- Write all repository documentation and code/configuration comments in English. Keep localized website text in its intended language; the site supports both English and Spanish.
+- Edit source files and rebuild. Never fix a page only in `dist/`.
+- Keep IDs stable when renaming products. Synchronize `products.<id>` across all languages.
+- Do not invent prices, sizes, quantities, warranties, or product attributes. Respect unit pricing and distinguish pairs from packages.
+- Preserve original photo files, resolution, and bytes unless a transformation is requested. Do not artificially enlarge small images to imply higher quality.
+- Show photos completely and preserve their proportions. Unused space always uses the shared white background from the stylesheet, regardless of product or site theme. Do not add per-image configuration or inline styles for this uniform value.
+- Add visible text and accessible labels to the dictionary. Preserve placeholders and the language of WhatsApp messages.
+- Keep theme and language preferences independent and persistent. Preserve relative links and the `shoes.html` redirect.
+- Reuse existing mixins and styles. Avoid adding frameworks, services, or dependencies without a concrete need.
+- Keep `vercel.json` limited to Git deployments from `master`. Publish releases only for PRs merged into `master`, from the exact merge commit, after the build, tests, and complete source ZIP upload succeed. Do not use `pull_request_target` to execute code from an external branch.
+- Keep BrowserSync and the inspector restricted to loopback, with the UI and tunnels disabled. Use the shared configuration for both development modes.
+- Keep `.env` out of Git and leave `WPP_ID=` empty in `.env.example`.
+- `WPP_ID` becomes part of public links during compilation. Never store secrets in frontend variables or expose credentials in logs, commits, or documentation.
 
-## Validación y entrega
+## Validation and delivery
 
-Ejecuta desde la raíz:
+Run from the repository root:
 
 ```sh
 npm run build
@@ -46,10 +46,10 @@ node --test tests/*.test.js
 git diff --check
 ```
 
-Para cambios visuales, revisa en navegador tarjetas y modales en móvil y escritorio, con ambos temas. Para cambios de catálogo o traducciones, comprueba disponibilidad, precio, unidades y mensajes de WhatsApp. Los tests de Node no sustituyen la revisión visual.
+For visual changes, inspect cards and modals in a browser on mobile and desktop in both themes. For catalog or translation changes, verify availability, prices, units, and WhatsApp messages. Node tests do not replace visual review.
 
-Revisa el diff completo y confirma que los archivos requeridos estén incluidos. Actualiza el PR autorizado con un resumen del comportamiento final y las verificaciones efectivamente ejecutadas. No declares una prueba como realizada si estuvo bloqueada. No fusiones ni publiques por el solo hecho de haber actualizado el PR: esas acciones requieren que formen parte de la solicitud del usuario. Evita sobrescribir la rama remota con un push forzado.
+Review the complete diff and confirm all required files are included. Update the authorized PR with the final behavior and checks actually performed. Do not report a blocked check as passed. Merge or publish only when the user's request includes that action. Avoid overwriting the remote branch with a forced push.
 
-## Criterio de finalización
+## Completion criteria
 
-La tarea está completa cuando el cambio solicitado está implementado, las verificaciones pertinentes pasan, la documentación coincide con el código y la rama/PR autorizados contienen el resultado. Comunica cualquier limitación real pendiente.
+The task is complete when the requested change is implemented, relevant checks pass, documentation matches the code, and the authorized branch and PR contain the result. Report any remaining limitations.

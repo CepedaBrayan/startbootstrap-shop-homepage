@@ -302,6 +302,24 @@
   ],
   "garage": [
     {
+      "id": "xiaomi-smart-band-8-pro",
+      "name": "Xiaomi SmartWatch Smart Band 8 Pro - used - good condition",
+      "quantity": 1,
+      "size": null,
+      "sizeUnit": null,
+      "price": 120000,
+      "images": [
+        "garage/xiaomi-smart-band-8-pro-1.jpeg",
+        "garage/xiaomi-smart-band-8-pro-2.jpeg",
+        "garage/xiaomi-smart-band-8-pro-3.jpeg",
+        "garage/xiaomi-smart-band-8-pro-4.jpeg",
+        "garage/xiaomi-smart-band-8-pro-5.jpeg",
+        "garage/xiaomi-smart-band-8-pro-6.jpeg",
+        "garage/xiaomi-smart-band-8-pro-7.svg"
+      ],
+      "imageFit": "contain"
+    },
+    {
       "id": "xbox-series-s-control",
       "name": "Xbox series s + control",
       "quantity": 1,

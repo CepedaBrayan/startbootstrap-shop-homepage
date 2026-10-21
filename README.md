@@ -28,7 +28,7 @@ npm start
 
 This builds the site, starts BrowserSync and watches source files. Open the local URL shown in the terminal, normally `http://127.0.0.1:3000`. The server binds exclusively to `127.0.0.1`; its administration UI and tunnels are disabled. Both development modes use `scripts/browser-sync-config.js`. `npm run start:debug` also limits the debugger to `127.0.0.1:9229`.
 
-Changes to products, translations, photo backgrounds and shared components rebuild the pages. Restart development after changing `.env` so the new number is included in the build.
+Changes to products, translations and shared components rebuild the pages. Stylesheet changes rebuild the CSS. Restart development after changing `.env` so the new number is included in the build.
 
 ## Commands
 
@@ -51,7 +51,6 @@ Changes to products, translations, photo backgrounds and shared components rebui
 | --- | --- |
 | `src/data/products.json` | Products grouped into `apparel` and `garage` |
 | `src/data/translations.json` | Languages, UI messages and translated product names |
-| `src/data/image-backgrounds.json` | Uniform white backgrounds for product photos |
 | `src/assets/img/` | Original image files |
 | `src/pug/index.pug` | Category selection page |
 | `src/pug/views/` | Catalog pages and the legacy Shoes redirect |
@@ -69,7 +68,9 @@ Each product has an `id`, `name`, `quantity`, `size`, `sizeUnit`, `price` and `i
 
 Keep IDs stable when renaming products, and update `products.<id>` in every language. Give variants with their own inventory or photos separate entries. White Adidas, white Puma and black Puma socks are separate products.
 
-The first image is the cover; remaining images appear in the modal. Preserve original formats, resolution and bytes unless a transformation is requested. Photos retain their proportions and remain fully visible. Configure every image path in `image-backgrounds.json` with `#ffffff` so all unused image space stays white in both themes. Missing or invalid values fall back to white. There is no automatic browser-side color detection.
+The first image is the cover; remaining images appear in the modal. Preserve original formats, resolution and bytes unless a transformation is requested. Photos retain their proportions and remain fully visible. The shared `--product-image-background` variable in `src/scss/styles.scss` defines white once for every product photo, in both themes. New photos need no separate color configuration or inline styles.
+
+The Xiaomi Smart Band 8 Pro gallery uses six unchanged portrait JPEGs and one self-contained portrait SVG wrapping the original landscape JPEG. The SVG rotates the embedded photo 90° counterclockwise without cropping, recompression or external image requests; its original JPEG bytes remain intact.
 
 ## Price sorting and page layout
 
@@ -93,6 +94,8 @@ The repository provides explicit context, source ownership and repeatable checks
 - [SKILLS.md](SKILLS.md) describes procedures for inventory, images, languages, interface changes and pull requests.
 
 The workflow is **inspect → implement → validate → review the diff → update the PR**. AI assists with development; the catalog owner supplies commercial information. The generated site does not require an AI service at runtime.
+
+All repository documentation and code/configuration comments are written in English. Localized website content retains its intended language; the catalog supports both English and Spanish.
 
 Run `npm audit` to review dependencies without changing the lockfile. Verify dependency updates through builds and tests. The October 15, 2026 review reduced affected packages from 29 to 6. The remaining alerts derive from the unpatched `braces` advisory GHSA-vfj7-8cjw-p6xm in development tooling. The project's patterns are fixed and its development server is restricted to loopback. The production-only audit reported zero alerts. Remaining development alerts still require reassessment when upstream fixes become available; do not hide them with audit exclusions or forced downgrades.
 
