@@ -95,6 +95,8 @@ The repository provides explicit context, source ownership and repeatable checks
 
 The workflow is **inspect → implement → validate → review the diff → update the PR**. AI assists with development; the catalog owner supplies commercial information. The generated site does not require an AI service at runtime.
 
+All repository documentation and code/configuration comments are written in English. Localized website content retains its intended language; the catalog supports both English and Spanish.
+
 Run `npm audit` to review dependencies without changing the lockfile. Verify dependency updates through builds and tests. The October 15, 2026 review reduced affected packages from 29 to 6. The remaining alerts derive from the unpatched `braces` advisory GHSA-vfj7-8cjw-p6xm in development tooling. The project's patterns are fixed and its development server is restricted to loopback. The production-only audit reported zero alerts. Remaining development alerts still require reassessment when upstream fixes become available; do not hide them with audit exclusions or forced downgrades.
 
 Publish only `dist/`. Both `npm start` and `start:debug` are local development tools.

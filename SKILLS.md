@@ -1,63 +1,64 @@
-# Procedimientos de desarrollo asistido por IA
+# AI-assisted development procedures
 
-Este es el manual operativo del repositorio para agentes y desarrolladores. Complementa [AGENTS.md](AGENTS.md); no necesita instalar plugins ni ejecutar un modelo dentro del sitio. La IA se utiliza durante el desarrollo y el resultado sigue siendo un sitio estático.
+This is the repository's operating guide for agents and developers. It complements [AGENTS.md](AGENTS.md). No plugin installation or model running inside the website is required. AI is used during development, and the result remains a static site.
 
-## 1. Actualizar inventario
+Write repository documentation and code/configuration comments in English. Preserve the intended languages of localized website content and translation examples.
 
-**Entrada:** lista aprobada de productos, precios unitarios, cantidades y tallas.
+## 1. Update inventory
 
-1. Localiza el producto por su ID en `src/data/products.json` y compara el estado actual con la entrada.
-2. Mantén `id` estable. Usa un ID único para cada variante que deba mostrar stock, precio o fotos propios.
-3. Guarda `price` como número en COP y `quantity` como entero. Usa `null` cuando la talla o su unidad no apliquen; no inventes valores.
-4. Para productos vendidos por par, establece `saleUnit: "pair"`; tanto el precio como la cantidad corresponden a pares, no a paquetes fotografiados.
-5. Actualiza `products.<id>` en cada idioma de `translations.json`. Un cambio de nombre comercial debe reflejarse también en WhatsApp.
-6. Reconstruye y comprueba la tarjeta y el mensaje de compra en inglés y español.
+**Input:** an approved list of products, unit prices, quantities, and sizes.
 
-**Resultado esperado:** inventario coherente, sin duplicados accidentales ni traducciones faltantes.
+1. Locate the product by ID in `src/data/products.json` and compare its current state with the approved input.
+2. Keep `id` stable. Use a unique ID for each variant that needs its own stock, price, or photos.
+3. Store `price` as a numeric COP amount and `quantity` as an integer. Use `null` when size or its unit does not apply; do not invent values.
+4. Set `saleUnit: "pair"` for products sold by the pair. Both price and quantity refer to individual pairs, rather than the packages shown in photos.
+5. Update `products.<id>` in every language in `translations.json`. Product name changes must also appear in WhatsApp messages.
+6. Rebuild and verify the card and purchase message in English and Spanish.
 
-## 2. Incorporar imágenes y galerías
+**Expected result:** consistent inventory without accidental duplicates or missing translations.
 
-**Entrada:** originales adjuntos o un archivo ZIP con nombres que identifican productos.
+## 2. Add images and galleries
 
-1. Enumera los archivos y revisa sus dimensiones y contenido. Ignora metadatos de sistema del ZIP; evita extraer rutas fuera del directorio de trabajo.
-2. Prepara la correspondencia archivo → ID de producto. Comprueba marca, color y variante antes de asignar.
-3. Copia los originales a `src/assets/img/apparel/` o `src/assets/img/garage/` con nombres descriptivos y su formato real. Evita espacios; no recomprimas por comodidad.
-4. Añade rutas relativas a `src/assets/img/` en `images`. La primera es la portada. Prefiere la imagen más nítida y representativa; la resolución por sí sola no valida la variante.
-5. Conserva fotos útiles existentes, elimina duplicados y excluye fotos de otras variantes. Una galería debe corresponder a un único producto.
-6. Conserva el fondo blanco compartido definido con `--product-image-background` en `src/scss/styles.scss`. No es necesario registrar colores al añadir fotos: tarjetas y modales heredan la misma variable en ambos temas y usan `object-fit: contain` para llenar las bandas sobrantes sin recortar ni estirar la foto. No agregues mapas de colores ni estilos inline por imagen para este valor uniforme.
+**Input:** attached originals or a ZIP whose filenames identify the products.
 
-7. Reconstruye, comprueba la carga de cada foto y recorre los controles del modal. Revisa imágenes verticales y horizontales en ambos temas y tamaños de pantalla.
-8. Compara hashes de los originales y las copias para confirmar que no cambiaron los bytes cuando se exige calidad original.
+1. List the files and inspect their dimensions and content. Ignore ZIP system metadata and prevent extraction outside the working directory.
+2. Map each file to a product ID. Verify brand, color, and variant before assigning it.
+3. Copy originals to `src/assets/img/apparel/` or `src/assets/img/garage/` with descriptive filenames and their actual format. Avoid spaces; do not recompress for convenience.
+4. Add paths relative to `src/assets/img/` to `images`. The first image is the cover. Prefer a sharp, representative photo; resolution alone does not establish the correct variant.
+5. Keep useful existing photos, remove duplicates, and exclude photos of other variants. Each gallery must belong to a single product.
+6. Preserve the shared white background defined by `--product-image-background` in `src/scss/styles.scss`. New photos need no color registration: cards and modals inherit the same variable in both themes and use `object-fit: contain` to fill unused space without cropping or stretching the photo. Do not add color maps or per-image inline styles for this uniform value.
+7. Rebuild, verify that every photo loads, and cycle through the modal controls. Review portrait and landscape images in both themes and at mobile and desktop sizes.
+8. Compare hashes of originals and copies to confirm unchanged bytes when original quality is required.
 
-**Resultado esperado:** imágenes correctas, originales conservados y área de presentación completamente pintada.
+**Expected result:** correct images, preserved originals, and fully painted photo areas.
 
-## 3. Agregar idiomas o textos
+## 3. Add languages or text
 
-1. Edita `src/data/translations.json`. Cada idioma tiene `name`, `locale` y `messages`.
-2. Para francés, copia `languages.en` a `languages.fr`, cambia `name` a `Français`, `locale` a `fr-FR` y traduce los mensajes. El botón descubre los idiomas del JSON.
-3. Conserva claves y placeholders como `{name}`, `{size}`, `{count}` y `{number}`. El respaldo usa `defaultLanguage`, actualmente `en`.
-4. Conecta textos con `data-i18n` y atributos con `data-i18n-alt`, `data-i18n-aria-label` o `data-i18n-content`. Los parámetros van en `data-i18n-params` como JSON.
-5. Ejecuta los tests y comprueba cambio de idioma, recarga, navegación y mensajes de WhatsApp. Los precios siguen en COP con formato colombiano.
+1. Edit `src/data/translations.json`. Each language has `name`, `locale`, and `messages`.
+2. To add French, copy `languages.en` to `languages.fr`, set `name` to `Français` and `locale` to `fr-FR`, then translate the messages. The language button discovers languages from the JSON.
+3. Preserve keys and placeholders such as `{name}`, `{size}`, `{count}`, and `{number}`. The fallback uses `defaultLanguage`, currently `en`.
+4. Connect visible text with `data-i18n` and attributes with `data-i18n-alt`, `data-i18n-aria-label`, or `data-i18n-content`. Pass parameters as JSON in `data-i18n-params`.
+5. Run the tests and verify language switching, page reloads, navigation, and WhatsApp messages. Prices remain in COP with Colombian number formatting.
 
-**Resultado esperado:** traducción completa sin cambios de lógica al añadir un idioma. El respaldo tolera mensajes ausentes en ejecución; los tests exigen que los idiomas entregados estén completos.
+**Expected result:** complete translations without logic changes when adding a language. Runtime fallback tolerates missing messages; tests require complete translations for shipped languages.
 
-## 4. Modificar interfaz o tema
+## 4. Change the interface or theme
 
-1. Localiza la página Pug o el mixin compartido que genera el elemento.
-2. Usa las variables `--shop-*` para superficies, texto y bordes del sitio. Los fondos `--product-image-background` de las fotos siempre son blancos y no cambian con el tema.
-3. Conserva botones semánticos, nombres accesibles, foco visible y controles de cierre/navegación de modales.
-4. Mantén la inicialización de idioma antes de `scripts.js`; el tema usa `shopI18n` y se aplica en el encabezado del documento para evitar un destello claro.
-5. Revisa home, Apparel, Garage Sale y modales en ambos temas, con anchos de móvil y escritorio. Cambia idioma y tema por separado y comprueba la persistencia.
+1. Locate the Pug page or shared mixin that renders the element.
+2. Use `--shop-*` variables for site surfaces, text, and borders. The shared `--product-image-background` remains white in both themes.
+3. Preserve semantic buttons, accessible names, visible focus, and modal close/navigation controls.
+4. Keep language initialization before `scripts.js`. Theme handling uses `shopI18n` and runs in the document head to avoid a light flash on dark pages.
+5. Review the home page, Apparel, Garage Sale, and modals in both themes at mobile and desktop widths. Change language and theme independently and verify persistence.
 
-**Resultado esperado:** comportamiento consistente, sin desbordamiento horizontal ni pérdida de accesibilidad.
+**Expected result:** consistent behavior without horizontal overflow or loss of accessibility.
 
-## 5. Preparar un PR revisable
+## 5. Prepare a reviewable PR
 
-1. Comprueba la rama y el PR autorizados; toma el estado remoto actual como base y conserva cambios ajenos.
-2. Ejecuta build, tests y revisión de whitespace descritos en `AGENTS.md`. Para cambios de dependencias, ejecuta también `npm audit` y comprueba el arranque de desarrollo; el servidor debe escuchar solo en `127.0.0.1`, sin UI ni túneles.
-3. Revisa los cambios de datos, rutas y traducciones además del código. No incluyas `dist/`, `node_modules`, archivos temporales, `.env` ni credenciales. La plantilla `.env.example` debe contener `WPP_ID=` sin valor.
-4. Resume el resultado final y sus pruebas; señala cualquier comprobación bloqueada sin presentarla como aprobada.
-5. Sube el commit a la rama del PR, verifica que contenga el cambio y deja la fusión para cuando esté solicitada.
-6. El release automático corre únicamente al fusionar a `master`. Mantén el ZIP como código fuente sin archivos locales, el pin de acciones, la validación previa y la publicación desde borrador tras subir el asset. Los releases no sustituyen el deployment de Vercel.
+1. Confirm the authorized branch and PR. Use the current remote state as the base and preserve other changes.
+2. Run the build, tests, and whitespace checks described in `AGENTS.md`. For dependency changes, also run `npm audit` and check development startup. The server must listen only on `127.0.0.1`, with the UI and tunnels disabled.
+3. Review data, paths, and translations as well as code. Exclude `dist/`, `node_modules`, temporary files, `.env`, and credentials. The `.env.example` template must contain an empty `WPP_ID=`.
+4. Summarize the final behavior and validation. Identify blocked checks without presenting them as passed.
+5. Upload the commit to the PR branch, verify it contains the change, and merge only when requested.
+6. Automatic releases run only after merging into `master`. Keep the ZIP limited to source code without local files, preserve pinned action revisions and validation, and publish from a draft only after the asset upload succeeds. Releases do not replace Vercel deployments.
 
-**Resultado esperado:** un PR con alcance claro, evidencia verificable y documentación actualizada.
+**Expected result:** a clearly scoped PR with verifiable evidence and current documentation.
