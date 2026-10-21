@@ -1,14 +1,17 @@
 // Import Bootstrap
 @import "bootstrap/scss/bootstrap.scss";
 
-/* Product photos keep their proportions; each image owns its backdrop. */
+/* All product photos share one white backdrop in both themes. */
+.card-img-top.product-image,
+.modal-body .carousel-item img {
+  background-color: var(--product-image-background);
+}
 
 .card-img-top.product-image {
   width: 100%;
   height: 260px;
   object-fit: contain;
   object-position: center;
-  background-color: var(--product-image-background, #fff);
 }
 
 @media (max-width: 576px) {
@@ -32,12 +35,12 @@
   height: 100%;
   width: 100%;
   object-fit: contain;
-  background-color: var(--product-image-background, #fff);
 }
 
 /* Shared surfaces cover home, catalogs and photo modals. */
 :root {
   color-scheme: only light;
+  --product-image-background: #fff;
   --shop-background: #fff;
   --shop-surface: #fff;
   --shop-subtle: #f8f9fa;
@@ -115,13 +118,6 @@ body {
 .shop-header, .shop-footer {
   background-color: var(--shop-subtle);
   color: var(--shop-text);
-}
-
-/* Legacy contain classes share the same image-specific backdrop. */
-.card-img-top.product-image.product-image-contain,
-.modal-body .carousel-item img.product-image-contain {
-  object-fit: contain;
-  background-color: var(--product-image-background, #fff);
 }
 
 /* Gallery controls stay visible on both white and black photo backgrounds. */

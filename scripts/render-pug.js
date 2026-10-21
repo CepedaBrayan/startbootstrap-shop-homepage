@@ -14,7 +14,6 @@ module.exports = function renderPug(filePath) {
         doctype: 'html',
         filename: filePath,
         basedir: srcPath,
-        imageBackgrounds: JSON.parse(fs.readFileSync(upath.join(srcPath, 'data/image-backgrounds.json'), 'utf8')),
         translations: JSON.parse(fs.readFileSync(upath.join(srcPath, 'data/translations.json'), 'utf8')),
         products: JSON.parse(fs.readFileSync(upath.join(srcPath, 'data/products.json'), 'utf8'))
     });

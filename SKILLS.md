@@ -24,16 +24,7 @@ Este es el manual operativo del repositorio para agentes y desarrolladores. Comp
 3. Copia los originales a `src/assets/img/apparel/` o `src/assets/img/garage/` con nombres descriptivos y su formato real. Evita espacios; no recomprimas por comodidad.
 4. Añade rutas relativas a `src/assets/img/` en `images`. La primera es la portada. Prefiere la imagen más nítida y representativa; la resolución por sí sola no valida la variante.
 5. Conserva fotos útiles existentes, elimina duplicados y excluye fotos de otras variantes. Una galería debe corresponder a un único producto.
-6. Define un color por cada ruta en `src/data/image-backgrounds.json`, por ejemplo:
-
-```json
-{
-  "apparel/example-1.webp": "#ffffff",
-  "apparel/example-2.jpg": "#ffffff"
-}
-```
-
-Usa siempre `#ffffff` para todas las fotos. El catálogo utiliza un fondo blanco uniforme, independiente del producto, los colores de la foto y el tema. No hay detección automática en el navegador. Las tarjetas y los modales usan `object-fit: contain`; el fondo llena las bandas sobrantes sin recortar ni estirar la foto. Un color ausente o inválido usa blanco.
+6. Conserva el fondo blanco compartido definido con `--product-image-background` en `src/scss/styles.scss`. No es necesario registrar colores al añadir fotos: tarjetas y modales heredan la misma variable en ambos temas y usan `object-fit: contain` para llenar las bandas sobrantes sin recortar ni estirar la foto. No agregues mapas de colores ni estilos inline por imagen para este valor uniforme.
 
 7. Reconstruye, comprueba la carga de cada foto y recorre los controles del modal. Revisa imágenes verticales y horizontales en ambos temas y tamaños de pantalla.
 8. Compara hashes de los originales y las copias para confirmar que no cambiaron los bytes cuando se exige calidad original.
