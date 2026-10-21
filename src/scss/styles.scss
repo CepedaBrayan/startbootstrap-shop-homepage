@@ -71,6 +71,30 @@ body {
 }
 
 .modal-header { border-color: var(--shop-border); }
+.gallery-share { border-color: var(--shop-border); }
+.gallery-share-button, .gallery-share-input {
+  color: var(--shop-text);
+  background-color: var(--shop-surface);
+  border-color: var(--shop-border);
+}
+.gallery-share-button:hover, .gallery-share-button:focus-visible,
+.gallery-share-input:focus {
+  color: var(--shop-text);
+  background-color: var(--shop-subtle);
+  border-color: var(--shop-text);
+}
+
+/* Keep the gallery and share controls within the viewport, including short screens. */
+.product-gallery .modal-body {
+  height: 75vh;
+  min-height: 0;
+  overflow: hidden;
+}
+.product-gallery .carousel,
+.product-gallery .carousel-inner,
+.product-gallery .carousel-item {
+  height: 100%;
+}
 .bg-light { background-color: var(--shop-subtle) !important; }
 .text-muted { color: var(--shop-muted) !important; }
 .navbar-light .navbar-brand, .navbar-light .navbar-brand:hover,
