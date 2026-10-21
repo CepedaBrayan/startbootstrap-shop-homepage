@@ -19,8 +19,8 @@ mixin productCard(product)
         a.btn.btn-success(href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hola, me interesa ' + product.name + (product.size ? ' (talla ' + product.size + (product.sizeUnit ? ' ' + product.sizeUnit : '') + ')' : ''))}`, target='_blank', rel='noopener noreferrer', data-whatsapp-product=product.id, data-product-size=product.size ? product.size + (product.sizeUnit ? ' ' + product.sizeUnit : '') : '', data-i18n='whatsapp.label') WhatsApp
 
 mixin productModal(product)
-  .modal.fade(id=`modal-${product.id}`, tabindex='-1', aria-labelledby=`title-${product.id}`, aria-hidden='true')
-    .modal-dialog.modal-lg.modal-dialog-centered
+  .modal.fade.product-gallery(id=`modal-${product.id}`, data-gallery-product=product.id, tabindex='-1', aria-labelledby=`title-${product.id}`, aria-describedby=`description-${product.id}`, aria-hidden='true')
+    .modal-dialog.modal-lg.modal-dialog-centered.modal-dialog-scrollable
       .modal-content
         .modal-header
           h5.modal-title(id=`title-${product.id}`, data-i18n=`products.${product.id}`)= product.name
@@ -36,6 +36,15 @@ mixin productModal(product)
                 span.carousel-control-prev-icon(aria-hidden='true')
               button.carousel-control-next(type='button', data-bs-target=`#carousel-${product.id}`, data-bs-slide='next', aria-label='Next photo', data-i18n-aria-label='photo.next')
                 span.carousel-control-next-icon(aria-hidden='true')
+        .modal-footer.gallery-share
+          .gallery-share-actions
+            button.btn.gallery-share-button(type='button', data-copy-product-link, data-i18n='share.copy') Copy link
+            span.small.text-muted(data-share-status, role='status', aria-live='polite', aria-atomic='true')
+          - const descriptionKey = `productDescriptions.${product.id}`
+          p.gallery-description.small.text-muted(id=`description-${product.id}`, data-i18n=descriptionKey)= translations.languages[translations.defaultLanguage].messages[descriptionKey]
+          .gallery-share-fallback(data-share-fallback, hidden)
+            label.form-label.small(for=`share-link-${product.id}`, data-i18n='share.link') Product link
+            input.form-control.gallery-share-input(id=`share-link-${product.id}`, type='url', readonly, data-share-url)
 
 
 mixin productCatalog(catalog)

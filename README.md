@@ -40,7 +40,7 @@ Changes to products, translations and shared components rebuild the pages. Style
 | `npm run build:scss` | Compile Bootstrap and custom styles |
 | `npm run build:scripts` | Copy browser JavaScript |
 | `npm run build:assets` | Copy images and other assets |
-| `node --test tests/*.test.js` | Check catalog data, translations, sorting, local-server isolation and release packaging |
+| `node --test tests/*.test.js` | Check catalog data, translations, sorting, gallery links/history, local-server isolation and release packaging |
 | `git diff --check` | Check whitespace errors |
 
 `dist/` is generated output: edit `src/` and rebuild. To host the site, publish the complete contents of `dist/` while preserving its directory structure. Set `WPP_ID` in the build environment. Bootstrap JavaScript is loaded from jsDelivr; images, styles and application scripts are served locally by the site.
@@ -60,6 +60,7 @@ Changes to products, translations and shared components rebuild the pages. Style
 | `src/js/i18n.js` | Language selection, translation and persistence |
 | `src/js/scripts.js` | Theme selection and persistence |
 | `src/js/catalog-sort.js` | Shared numeric price sorting |
+| `src/js/product-gallery.js` | Shared product URLs, modal history and copying links |
 | `scripts/` | Build, development and release tools |
 
 ## Maintaining products and photos
@@ -79,6 +80,16 @@ Apparel and Garage Sale use the same `productCatalog` mixin and `catalog-sort.js
 Changing language or theme retains the current sorting selection. Labels are defined in the translation dictionary, and the selector follows the active theme. The category selection page shares the catalog header, margins and card spacing on mobile. On desktop (992px and wider), it becomes a viewport-height landing page with side-by-side category cards, flexible image areas and a visible footer, without vertical scrolling. Smaller screens keep the stacked, scrollable layout.
 
 All three main pages share a footer with a small, understated `powered by AI assisted` credit. The requested credit remains in English in both site languages and adapts to the active theme.
+
+## Shareable product galleries
+
+Opening a product photo adds its stable ID to the category URL, for example `views/garage.html?product=xiaomi-smart-band-8-pro` or `views/apparel.html?product=ae-all-star-multicolor`. Opening or reloading that URL automatically shows the matching product's photo carousel. Links work on the static site without server routes or backend storage. Product IDs must remain stable for previously shared links to keep working.
+
+Each gallery has a translated **Copy link** button. The copied URL uses the current site's origin and category path, with only the product parameter; unrelated query parameters and fragments are excluded. If clipboard access is unavailable or denied, a labeled, selected field allows manual copying. A link identifies the product gallery, rather than an individual slide.
+
+A short description based on the product photos appears beside the copy controls on larger screens and below them on phones. Descriptions live under `productDescriptions.<id>` in each language's dictionary. Keep them focused on visible details; do not infer materials, technical specifications, condition or included accessories from appearance alone. Add a translated description when adding a product.
+
+Browser Back closes a gallery opened from the catalog, and Forward reopens it. Closing a directly opened shared link leaves the visitor on the same catalog. Unknown IDs, including products from the other category, leave the normal catalog visible. Both categories use the same gallery script and shared Pug component. Theme and language preferences still follow the visitor's settings.
 
 ## Languages and themes
 
