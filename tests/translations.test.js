@@ -18,10 +18,11 @@ test('Each shipped language translates every message and preserves interpolation
     }
 });
 
-test('All catalog products have translated names in every shipped language', () => {
+test('All catalog products have translated names and descriptions in every shipped language', () => {
     for (const language of Object.values(dictionary.languages)) {
         for (const product of Object.values(catalog).flat()) {
             assert(language.messages[`products.${product.id}`], product.id);
+            assert(language.messages[`productDescriptions.${product.id}`], `Missing description: ${product.id}`);
         }
     }
 });

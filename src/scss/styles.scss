@@ -71,7 +71,31 @@ body {
 }
 
 .modal-header { border-color: var(--shop-border); }
-.gallery-share { border-color: var(--shop-border); }
+.gallery-share {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem 1rem;
+  border-color: var(--shop-border);
+  max-height: 45vh;
+  max-height: 45dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.gallery-share > * { margin: 0; }
+.gallery-share-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .25rem;
+}
+.gallery-share [data-share-status]:empty { display: none; }
+.gallery-description { min-width: 0; overflow-wrap: anywhere; }
+.gallery-share-fallback { grid-column: 1 / -1; min-width: 0; }
+@media (max-width: 575.98px) {
+  .gallery-share { grid-template-columns: minmax(0, 1fr); }
+  .gallery-share-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: .5rem; }
+}
 .gallery-share-button, .gallery-share-input {
   color: var(--shop-text);
   background-color: var(--shop-surface);

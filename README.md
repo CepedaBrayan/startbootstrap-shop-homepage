@@ -87,6 +87,8 @@ Opening a product photo adds its stable ID to the category URL, for example `vie
 
 Each gallery has a translated **Copy link** button. The copied URL uses the current site's origin and category path, with only the product parameter; unrelated query parameters and fragments are excluded. If clipboard access is unavailable or denied, a labeled, selected field allows manual copying. A link identifies the product gallery, rather than an individual slide.
 
+A short description based on the product photos appears beside the copy controls on larger screens and below them on phones. Descriptions live under `productDescriptions.<id>` in each language's dictionary. Keep them focused on visible details; do not infer materials, technical specifications, condition or included accessories from appearance alone. Add a translated description when adding a product.
+
 Browser Back closes a gallery opened from the catalog, and Forward reopens it. Closing a directly opened shared link leaves the visitor on the same catalog. Unknown IDs, including products from the other category, leave the normal catalog visible. Both categories use the same gallery script and shared Pug component. Theme and language preferences still follow the visitor's settings.
 
 ## Languages and themes
